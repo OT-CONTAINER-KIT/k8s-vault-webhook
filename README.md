@@ -30,3 +30,16 @@ There are some secret managers which are planned to be implemented in future.
 <div align="center">
     <img src="./static/k8s-vault-webhook-arc.png">
 </div>
+
+### Installation
+
+k8s-vault-webhook can easily get installed by using [Helm](https://helm.sh/). We just simple need to add the repository of our [helm charts](https://github.com/OT-CONTAINER-KIT/helm-charts).
+
+```shell
+$ helm repo add ot-helm https://github.com/OT-CONTAINER-KIT/helm-charts
+
+$ helm upgrade k8s-vault-webhook ot-helm/k8s-vault-webhook --namespace <namespace> --install
+```
+
+If you want to pass your custom values file while installing the chart, you can find the values file [here](https://github.com/OT-CONTAINER-KIT/helm-charts/blob/main/charts/k8s-vault-webhook/values.yaml)
+
