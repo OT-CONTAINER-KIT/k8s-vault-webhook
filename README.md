@@ -24,3 +24,9 @@ There are some secret managers which are planned to be implemented in future.
 - Inject secret directly to pods/containers running inside Kubernetes
 - Support regex to inject all secrets from a certain path of Vault
 - Inject secrets directly to the process of container, i.e. after the injection you cannot read secrets from the environment variable
+
+### Architecture
+
+<div align="center">
+    <img src="./static/k8s-vault-webhook-arc.png">
+</div>
