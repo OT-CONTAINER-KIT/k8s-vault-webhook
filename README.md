@@ -57,3 +57,18 @@ If you want to pass your custom values file while installing the chart, you can 
 
 For setting up a quickstart environment for demo, you can follow [Quickstart.md](Quickstart.md).
 
+
+### Development
+
+If you like to contribute to this project, you are more than welcome. Please see our [DEVELOPMENT.md](./DEVELOPMENT.md) for details.
+
+### Release History
+
+Please see our [CHANGELOG.md](./CHANGELOG.md) for details.
+
+### Contact
+
+If you have any suggestion or query. Contact us at
+
+[opensource@opstree.com](mailto:opensource@opstree.com)
+
