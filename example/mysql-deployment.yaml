@@ -1,0 +1,36 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-vault-webhook-mysql
+  labels:
+    app: k8s-vault-webhook
+spec:
+  selector:
+    matchLabels:
+      app: k8s-vault-webhook
+      tier: mysql
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: k8s-vault-webhook
+        tier: mysql
+      annotations:
+        vault.opstree.secret.manager/enabled: "true"
+        vault.opstree.secret.manager/path: secret/mysql
+        vault.opstree.secret.manager/role: tester
+        vault.opstree.secret.manager/service: http://vault.vault.svc.cluster.local:8200
+    spec:
+      containers:
+      - image: mysql:5.6
+        name: mysql
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: vault:MYSQL_ROOT_PASSWORD
+        - name: MYSQL_PASSWORD
+          value: vault:MYSQL_ROOT_PASSWORD
+        ports:
+        - containerPort: 3306
+          name: mysql
