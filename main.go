@@ -468,8 +468,8 @@ func main() {
 
 		logger = log.WithField("app", "k8s-secret-injector")
 	}
-	fmt.Printf("K8s Vault Webhook Version: %s", version.GetVersion())
-	fmt.Printf("K8s Secret Injector Version: %s", viper.GetString("k8s_secret_injector_image"))
+	fmt.Printf("K8s Vault Webhook Version: %s\n", version.GetVersion())
+	fmt.Printf("K8s Secret Injector Version: %s\n", viper.GetString("k8s_secret_injector_image"))
 
 	k8sClient, err := newK8SClient()
 	if err != nil {
