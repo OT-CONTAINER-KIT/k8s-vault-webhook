@@ -43,3 +43,13 @@ $ helm upgrade k8s-vault-webhook ot-helm/k8s-vault-webhook --namespace <namespac
 
 If you want to pass your custom values file while installing the chart, you can find the values file [here](https://github.com/OT-CONTAINER-KIT/helm-charts/blob/main/charts/k8s-vault-webhook/values.yaml)
 
+### Annotations
+
+|**Name**|**Description**|**Required**|**Default**|
+|--------|---------------|------------|-----------|
+|`vault.opstree.secret.manager/enabled`| Enables the vault secret manager | - | false |
+|`vault.opstree.secret.manager/service`| Vault cluster address with http prefix | yes | - |
+|`vault.opstree.secret.manager/tls-secret`| Vault TLS secret name if vault is configured on TLS | no | - |
+|`vault.opstree.secret.manager/role`| Vault role created with Kubernetes serviceaccount | yes | - |
+|`vault.opstree.secret.manager/path`| Path of the secret in vault | no | - |
+
