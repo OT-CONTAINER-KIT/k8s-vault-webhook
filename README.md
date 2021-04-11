@@ -17,4 +17,10 @@ There are some secret managers which are planned to be implemented in future.
 - **[Azure Key Vault](https://azure.microsoft.com/en-in/services/key-vault/)**
 - **[GCP Secret Manager](https://cloud.google.com/secret-manager)**
 
+### Supported Features
 
+- Authentication to Hashicorp vault using Kubernetes service-account
+- RBAC implementation of vault using different policies of vault and association of policy with service-account
+- Inject secret directly to pods/containers running inside Kubernetes
+- Support regex to inject all secrets from a certain path of Vault
+- Inject secrets directly to the process of container, i.e. after the injection you cannot read secrets from the environment variable
