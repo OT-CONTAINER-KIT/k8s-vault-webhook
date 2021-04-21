@@ -23,6 +23,8 @@ spec:
         vault.opstree.secret.manager/role: tester
         vault.opstree.secret.manager/service: http://vault.vault.svc.cluster.local:8200
     spec:
+      serviceAccount: tester
+      serviceAccountName: tester
       containers:
       - image: mysql:5.6
         name: mysql
