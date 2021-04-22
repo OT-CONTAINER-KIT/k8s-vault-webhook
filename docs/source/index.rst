@@ -33,3 +33,11 @@ Architecture
 .. image:: _static/images/k8s-vault-webhook-arc.png
     :align: center
     :alt: logo
+
+.. toctree::
+    :caption: Getting Started
+    :maxdepth: 2
+    :hidden:
+
+    getting_started.rst
+
