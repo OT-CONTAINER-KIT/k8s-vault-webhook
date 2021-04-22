@@ -7,6 +7,8 @@
 k8s-vault-webhook is a Kubernetes admission webhook which listen for the events related to Kubernetes resources for injecting secret directly from secret manager to pod, secret, and configmap.
 The motive of creating this project is to provide a dynamic secret injection to containers/pods running inside Kubernetes from different secret managers for enhanced security.
 
+Documentation is available here:- https://k8s-vault-webhook.readthedocs.io/
+
 The secret managers which are currently supported:-
 
 - **[Hashicorp Vault](https://www.vaultproject.io/)**
@@ -55,7 +57,7 @@ If you want to pass your custom values file while installing the chart, you can 
 
 ### Quickstart
 
-For setting up a quickstart environment for demo, you can follow [Quickstart.md](docs/quickstart.md) inside [docs](docs) folder
+For setting up a quickstart environment for demo, you can start quickstart from [here](https://k8s-vault-webhook.readthedocs.io/)
 
 ### Development
 
