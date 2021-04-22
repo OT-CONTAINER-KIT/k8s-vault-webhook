@@ -41,3 +41,23 @@ Architecture
 
     getting_started.rst
 
+.. toctree::
+    :caption: Annotations
+    :maxdepth: 2
+    :hidden:
+
+    annotations.rst
+
+.. toctree::
+    :caption: Development
+    :maxdepth: 2
+    :hidden:
+
+    development.rst
+
+.. toctree::
+    :caption: Changelog
+    :maxdepth: 2
+    :hidden:
+
+    changelog.rst
