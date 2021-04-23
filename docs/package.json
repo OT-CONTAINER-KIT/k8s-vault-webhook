@@ -1,0 +1,19 @@
+{
+  "name": "k8s-vault-webhook",
+  "version": "0.0.1",
+  "description": "A k8s vault webhook is a Kubernetes webhook that can inject secrets into Kubernetes resources by connecting to multiple secret managers",
+  "main": "index.js",
+  "authors": {
+    "name": "Abhishek Dubey",
+    "email": "abhishekbhardwaj510@gmail.com"
+  },
+  "repository": "https://github.com/OT-CONTAINER-KIT/k8s-vault-webhook/k8s-vault-webhook",
+  "scripts": {
+    "dev": "vuepress dev src",
+    "build": "vuepress build src"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "vuepress": "^1.8.2"
+  }
+}
