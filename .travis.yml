@@ -12,4 +12,4 @@ deploy:
   github_token: $GITHUB_TOKEN # A token generated on GitHub allowing Travis to push code on you repository. Set in the Travis settings page of your repository, as a secure variable
   keep_history: true
   on:
-    branch: gh-pages
+    branch: master
