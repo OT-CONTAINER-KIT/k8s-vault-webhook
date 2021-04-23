@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Vault Setup | K8s Vault Webhook</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    
+    <meta name="description" content="A k8s vault webhook is a Kubernetes webhook that can inject secrets into Kubernetes resources by connecting to multiple secret managers">
+    <meta name="theme-color" content="#0065b3">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    
+    <link rel="preload" href="/k8s-vault-webhook/assets/css/0.styles.8ed90290.css" as="style"><link rel="preload" href="/k8s-vault-webhook/assets/js/app.6b22590a.js" as="script"><link rel="preload" href="/k8s-vault-webhook/assets/js/2.35c54c4f.js" as="script"><link rel="preload" href="/k8s-vault-webhook/assets/js/3.c0a74541.js" as="script"><link rel="prefetch" href="/k8s-vault-webhook/assets/js/10.492ae902.js"><link rel="prefetch" href="/k8s-vault-webhook/assets/js/11.953ec848.js"><link rel="prefetch" href="/k8s-vault-webhook/assets/js/12.b786a8f5.js"><link rel="prefetch" href="/k8s-vault-webhook/assets/js/13.15ab90bd.js"><link rel="prefetch" href="/k8s-vault-webhook/assets/js/14.80fd975f.js"><link rel="prefetch" href="/k8s-vault-webhook/assets/js/15.d915f9c1.js"><link rel="prefetch" href="/k8s-vault-webhook/assets/js/16.8c7735aa.js"><link rel="prefetch" href="/k8s-vault-webhook/assets/js/17.2a89c23b.js"><link rel="prefetch" href="/k8s-vault-webhook/assets/js/18.af281d68.js"><link rel="prefetch" href="/k8s-vault-webhook/assets/js/4.73f731d7.js"><link rel="prefetch" href="/k8s-vault-webhook/assets/js/5.b6c60889.js"><link rel="prefetch" href="/k8s-vault-webhook/assets/js/6.f09cfcc5.js"><link rel="prefetch" href="/k8s-vault-webhook/assets/js/7.3c25cc65.js"><link rel="prefetch" href="/k8s-vault-webhook/assets/js/8.28c823cc.js"><link rel="prefetch" href="/k8s-vault-webhook/assets/js/9.eee2d01c.js">
+    <link rel="stylesheet" href="/k8s-vault-webhook/assets/css/0.styles.8ed90290.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/k8s-vault-webhook/" class="home-link router-link-active"><!----> <span class="site-name">K8s Vault Webhook</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/k8s-vault-webhook/guide/" class="nav-link router-link-active">
+  Guide
+</a></div><div class="nav-item"><a href="https://opstree.com" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  OpsTree
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <a href="https://github.com/OT-CONTAINER-KIT/k8s-vault-webhook" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/k8s-vault-webhook/guide/" class="nav-link router-link-active">
+  Guide
+</a></div><div class="nav-item"><a href="https://opstree.com" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  OpsTree
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <a href="https://github.com/OT-CONTAINER-KIT/k8s-vault-webhook" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Guide</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/k8s-vault-webhook/guide/" aria-current="page" class="sidebar-link">Introduction</a></li><li><a href="/k8s-vault-webhook/guide/vault-setup.html" aria-current="page" class="active sidebar-link">Vault Setup</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/k8s-vault-webhook/guide/vault-setup.html#consul" class="sidebar-link">Consul</a></li><li class="sidebar-sub-header"><a href="/k8s-vault-webhook/guide/vault-setup.html#vault" class="sidebar-link">Vault</a></li></ul></li><li><a href="/k8s-vault-webhook/guide/vault-config.html" class="sidebar-link">Vault Configuration</a></li><li><a href="/k8s-vault-webhook/guide/webhook-install.html" class="sidebar-link">Webhook Installation</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>Annotations</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/k8s-vault-webhook/guide/annotations.html" class="sidebar-link">Annotations</a></li><li><a href="/k8s-vault-webhook/guide/vault-annotations.html" class="sidebar-link">Vault Annotations</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>Development</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/k8s-vault-webhook/guide/development.html" class="sidebar-link">Development Guide</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>Changelog</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/k8s-vault-webhook/guide/changelog.html" class="sidebar-link">v1.0</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="vault-setup"><a href="#vault-setup" class="header-anchor">#</a> Vault Setup</h1> <p>Vault is a tool for securely accessing secrets. A secret is anything that you want to tightly control access to, such as API keys, passwords, or certificates. Vault provides a unified interface to any secret, while providing tight access control and recording a detailed audit log.</p> <p>A modern system requires access to a multitude of secrets: database credentials, API keys for external services, credentials for service-oriented architecture communication, etc. Understanding who is accessing what secrets is already very difficult and platform-specific. Adding on key rolling, secure storage, and detailed audit logs is almost impossible without a custom solution.</p> <h2 id="consul"><a href="#consul" class="header-anchor">#</a> Consul</h2> <p>But before setting up Vault, we have to setup a key-value store for it. We are going to use <a href="https://consul.io/" target="_blank" rel="noopener noreferrer">Hashicorp Consul<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> for our datastore.</p> <p>Add the HashiCorp Helm Repository:</p> <div class="language-shell extra-class"><pre class="language-shell"><code>$ helm repo <span class="token function">add</span> hashicorp https://helm.releases.hashicorp.com
+<span class="token string">&quot;hashicorp&quot;</span> has been added to your repositories
+</code></pre></div><p>Ensure you have access to the consul chart:</p> <div class="language-shell extra-class"><pre class="language-shell"><code>$ helm search repo hashicorp/consul
+NAME                CHART VERSION   APP VERSION DESCRIPTION
+hashicorp/consul    <span class="token number">0.20</span>.1          <span class="token number">1.7</span>.2       Official HashiCorp Consul Chart
+</code></pre></div><p>Now you’re ready to install Consul! To install Consul with the default configuration using Helm 3 run:</p> <div class="language-shell extra-class"><pre class="language-shell"><code>$ helm <span class="token function">install</span> consul hashicorp/consul <span class="token punctuation">\</span>
+    --set global.name<span class="token operator">=</span>consul --namespace vault
+</code></pre></div><p><img src="/k8s-vault-webhook/assets/img/consul-install.363668f5.png" alt=""></p> <p>Let’s verify the consul pods.</p> <div class="language-shell extra-class"><pre class="language-shell"><code>$ kubectl get pods -n vault -l <span class="token assign-left variable">release</span><span class="token operator">=</span>consul
+</code></pre></div><p><img src="/k8s-vault-webhook/assets/img/consul-pods.914a7b8f.png" alt=""></p> <h2 id="vault"><a href="#vault" class="header-anchor">#</a> Vault</h2> <p>Once the consul cluster is ready, let’s try to install vault cluster with HA mode. Also we will change the datastore of vault to consul.</p> <div class="language-shell extra-class"><pre class="language-shell"><code>$ <span class="token function">cat</span> <span class="token operator">&lt;&lt;</span> <span class="token string">EOF<span class="token bash punctuation"> <span class="token operator">&gt;</span> ./override-values.yaml</span>
+server:
+  ha:
+    enabled: true
+    replicas: 3
+    config: |
+      ui = true
+
+      listener &quot;tcp&quot; {
+          tls_disable = 1
+          address = &quot;[::]:8200&quot;
+          cluster_address = &quot;[::]:8201&quot;
+      }
+
+      storage &quot;consul&quot; {
+          path = &quot;vault&quot;
+          address = &quot;consul-server:8500&quot;
+      }
+EOF</span>
+</code></pre></div><div class="language-shell extra-class"><pre class="language-shell"><code>$ helm <span class="token function">install</span> vault -f override-values.yaml <span class="token punctuation">\</span>
+    hashicorp/vault --namespace vault
+</code></pre></div><p><img src="/k8s-vault-webhook/assets/img/vault-helm.edaa515b.png" alt=""></p> <div class="language-shell extra-class"><pre class="language-shell"><code>$ kubectl get pods -n vault -l <span class="token assign-left variable">release</span><span class="token operator">=</span>vault
+</code></pre></div><p><img src="/k8s-vault-webhook/assets/img/vault-pods.2a9ddcc9.png" alt=""></p> <p><strong>Note:- You will see your vault pods are not in Ready state because vault is still sealed. We need to unseal it before using it.</strong></p> <div class="language-shell extra-class"><pre class="language-shell"><code>$ kubectl <span class="token builtin class-name">exec</span> -it vault-0 -n vault -- vault operator init
+Unseal Key <span class="token number">1</span>: mK1PeGrP+A+QidoKzsYIpaAhszwaMCGd0dUMGZ1JWWoQ
+Unseal Key <span class="token number">2</span>: q2bazJZReOhY2yfJmJ8puS2FLF4mpWqlE6umws4M2lwl
+Unseal Key <span class="token number">3</span>: fnpqx2xpAtI4iTU8iTA3uFM5xP/yDqnsPMsDzVTEyqPa
+Unseal Key <span class="token number">4</span>: I2D1KeIA3lIqdlodRL1AeFBmvBoy92mg8kno3QD0mKN0
+Unseal Key <span class="token number">5</span>: cNpXnigDnm/djUED5UE0nhAc3wXrfvIDKWQoVgzn5X5b
+
+Initial Root Token: s.XP91VwITtMaMhiL1JMHzFpSR
+
+Vault initialized with <span class="token number">5</span> key shares and a key threshold of <span class="token number">3</span>. Please securely
+distribute the key shares printed above. When the Vault is re-sealed,
+restarted, or stopped, you must supply at least <span class="token number">3</span> of these keys to unseal it
+before it can start servicing requests.
+
+Vault does not store the generated master key. Without at least <span class="token number">3</span> key to
+reconstruct the master key, Vault will remain permanently sealed<span class="token operator">!</span>
+
+It is possible to generate new unseal keys, provided you have a quorum of
+existing unseal keys shares. See <span class="token string">&quot;vault operator rekey&quot;</span> <span class="token keyword">for</span> <span class="token function">more</span> information.
+</code></pre></div><p><img src="/k8s-vault-webhook/assets/img/vault-init.b8e03aa1.png" alt=""></p> <p><strong>Note:- Save the output at a special secure place, because this will be required to login in Vault as root user. Use first three unseal tokens to unseal the vault.</strong></p> <div class="language-shell extra-class"><pre class="language-shell"><code>$ kubectl <span class="token builtin class-name">exec</span> -it vault-0 -n vault -- vault operator unseal mK1PeGrP+A+QidoKzsYIpaAhszwaMCGd0dUMGZ1JWWoQ
+$ kubectl <span class="token builtin class-name">exec</span> -it vault-0 -n vault -- vault operator unseal q2bazJZReOhY2yfJmJ8puS2FLF4mpWqlE6umws4M2lwl
+$ kubectl <span class="token builtin class-name">exec</span> -it vault-0 -n vault -- vault operator unseal fnpqx2xpAtI4iTU8iTA3uFM5xP/yDqnsPMsDzVTEyqPa
+</code></pre></div><div class="language-shell extra-class"><pre class="language-shell"><code>$ kubectl <span class="token builtin class-name">exec</span> -it vault-1 -n vault -- vault operator unseal mK1PeGrP+A+QidoKzsYIpaAhszwaMCGd0dUMGZ1JWWoQ
+$ kubectl <span class="token builtin class-name">exec</span> -it vault-1 -n vault -- vault operator unseal q2bazJZReOhY2yfJmJ8puS2FLF4mpWqlE6umws4M2lwl
+$ kubectl <span class="token builtin class-name">exec</span> -it vault-1 -n vault -- vault operator unseal fnpqx2xpAtI4iTU8iTA3uFM5xP/yDqnsPMsDzVTEyqPa
+</code></pre></div><div class="language-shell extra-class"><pre class="language-shell"><code>$ kubectl <span class="token builtin class-name">exec</span> -it vault-2 -n vault -- vault operator unseal mK1PeGrP+A+QidoKzsYIpaAhszwaMCGd0dUMGZ1JWWoQ
+$ kubectl <span class="token builtin class-name">exec</span> -it vault-2 -n vault -- vault operator unseal q2bazJZReOhY2yfJmJ8puS2FLF4mpWqlE6umws4M2lwl
+$ kubectl <span class="token builtin class-name">exec</span> -it vault-2 -n vault -- vault operator unseal fnpqx2xpAtI4iTU8iTA3uFM5xP/yDqnsPMsDzVTEyqPa
+</code></pre></div><p><img src="/k8s-vault-webhook/assets/img/vault-unseal.3f4a6d14.png" alt=""></p> <p>The pods will become ready as soon as vault is unsealed.</p> <div class="language-shell extra-class"><pre class="language-shell"><code>$ kubectl get pods -n vault -l app.kubernetes.io/instance<span class="token operator">=</span>vault
+NAME                                    READY   STATUS    RESTARTS   AGE
+vault-agent-injector-77fbb4d4f8-l4x45   <span class="token number">1</span>/1     Running   <span class="token number">0</span>          18m
+vault-0                                 <span class="token number">1</span>/1     Running   <span class="token number">0</span>          18m
+vault-1                                 <span class="token number">1</span>/1     Running   <span class="token number">0</span>          18m
+vault-2                                 <span class="token number">1</span>/1     Running   <span class="token number">0</span>          18m
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/k8s-vault-webhook/guide/" class="prev router-link-active">
+        Introduction
+      </a></span> <span class="next"><a href="/k8s-vault-webhook/guide/vault-config.html">
+        Vault Configuration
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/k8s-vault-webhook/assets/js/app.6b22590a.js" defer></script><script src="/k8s-vault-webhook/assets/js/2.35c54c4f.js" defer></script><script src="/k8s-vault-webhook/assets/js/3.c0a74541.js" defer></script>
+  </body>
+</html>
