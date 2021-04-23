@@ -1,10 +1,7 @@
-.. _changelog:
+## v1.0
+**April 11, 2021**
 
-v1.0
-====
-April 11, 2021
---------------
-**[Features Added]**
+**:tada: [Features Added]**
 
 - Authentication to Hashicorp vault using Kubernetes service-account
 - RBAC implementation of vault using different policies of vault and association of policy with service-account
