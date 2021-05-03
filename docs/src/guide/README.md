@@ -7,7 +7,7 @@
 k8s-vault-webhook is a Kubernetes admission webhook which listen for the events related to Kubernetes resources for injecting secret directly from secret manager to pod, secret, and configmap.
 The motive of creating this project is to provide a dynamic secret injection to containers/pods running inside Kubernetes from different secret managers for enhanced security.
 
-Documentation is available here:- https://k8s-vault-webhook.readthedocs.io/
+Documentation is available here:- https://ot-container-kit.github.io/k8s-vault-webhook/
 
 The secret managers which are currently supported:-
 
@@ -32,4 +32,3 @@ There are some secret managers which are planned to be implemented in future.
 <div align="center">
     <img src="./images/k8s-vault-webhook-arc.png">
 </div>
-

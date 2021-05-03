@@ -50,9 +50,19 @@ module.exports = {
           collapsable: false,
           children: [
             '',
-            'vault-setup',
-            'vault-config',
-            'webhook-install',
+            'secret-manager',
+            // 'vault-config',
+            // 'webhook-install',
+          ]
+        },
+        {
+          title: 'Getting Started',
+          collapsable: false,
+          children: [
+            'installation',
+            'configuration',
+            // 'vault-config',
+            // 'webhook-install',
           ]
         },
         {
