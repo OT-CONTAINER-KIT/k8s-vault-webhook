@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Hashicorp Vault | K8s Vault Webhook</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    
+    <meta name="description" content="A k8s vault webhook is a Kubernetes webhook that can inject secrets into Kubernetes resources by connecting to multiple secret managers">
+    <meta name="theme-color" content="#0065b3">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    
+    <link rel="preload" href="/k8s-vault-webhook/assets/css/0.styles.8ed90290.css" as="style"><link rel="preload" href="/k8s-vault-webhook/assets/js/app.d06077b7.js" as="script"><link rel="preload" href="/k8s-vault-webhook/assets/js/2.b9863d1e.js" as="script"><link rel="preload" href="/k8s-vault-webhook/assets/js/19.1eb89540.js" as="script"><link rel="prefetch" href="/k8s-vault-webhook/assets/js/10.a430fe2f.js"><link rel="prefetch" href="/k8s-vault-webhook/assets/js/11.85fa9005.js"><link rel="prefetch" href="/k8s-vault-webhook/assets/js/12.6204fd4d.js"><link rel="prefetch" href="/k8s-vault-webhook/assets/js/13.f202ebf5.js"><link rel="prefetch" href="/k8s-vault-webhook/assets/js/14.7093dabc.js"><link rel="prefetch" href="/k8s-vault-webhook/assets/js/15.0a417a24.js"><link rel="prefetch" href="/k8s-vault-webhook/assets/js/16.3f9e3a08.js"><link rel="prefetch" href="/k8s-vault-webhook/assets/js/17.695da34d.js"><link rel="prefetch" href="/k8s-vault-webhook/assets/js/18.dec35fa4.js"><link rel="prefetch" href="/k8s-vault-webhook/assets/js/20.e1a5dace.js"><link rel="prefetch" href="/k8s-vault-webhook/assets/js/21.79c5d091.js"><link rel="prefetch" href="/k8s-vault-webhook/assets/js/22.8363e432.js"><link rel="prefetch" href="/k8s-vault-webhook/assets/js/3.f4f29689.js"><link rel="prefetch" href="/k8s-vault-webhook/assets/js/4.0f54aa6c.js"><link rel="prefetch" href="/k8s-vault-webhook/assets/js/5.2cd5c4b4.js"><link rel="prefetch" href="/k8s-vault-webhook/assets/js/6.a9b463bd.js"><link rel="prefetch" href="/k8s-vault-webhook/assets/js/7.c87ef5dd.js"><link rel="prefetch" href="/k8s-vault-webhook/assets/js/8.28c8b37e.js"><link rel="prefetch" href="/k8s-vault-webhook/assets/js/9.59406413.js">
+    <link rel="stylesheet" href="/k8s-vault-webhook/assets/css/0.styles.8ed90290.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/k8s-vault-webhook/" class="home-link router-link-active"><!----> <span class="site-name">K8s Vault Webhook</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/k8s-vault-webhook/guide/" class="nav-link router-link-active">
+  Guide
+</a></div><div class="nav-item"><a href="https://opstree.com" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  OpsTree
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <a href="https://github.com/OT-CONTAINER-KIT/k8s-vault-webhook" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/k8s-vault-webhook/guide/" class="nav-link router-link-active">
+  Guide
+</a></div><div class="nav-item"><a href="https://opstree.com" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  OpsTree
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <a href="https://github.com/OT-CONTAINER-KIT/k8s-vault-webhook" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>Guide</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/k8s-vault-webhook/guide/" aria-current="page" class="sidebar-link">Introduction</a></li><li><a href="/k8s-vault-webhook/guide/secret-manager.html" class="sidebar-link">Secret Manager</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>Getting Started</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/k8s-vault-webhook/guide/installation.html" class="sidebar-link">Installation</a></li><li><a href="/k8s-vault-webhook/guide/configuration.html" class="sidebar-link">Configuration</a></li><li><a href="/k8s-vault-webhook/guide/annotations.html" class="sidebar-link">Annotations</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>Integration</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/k8s-vault-webhook/guide/hashicorp-vault.html" class="sidebar-link">Hashicorp Vault</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Examples</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/k8s-vault-webhook/guide/hashicorp-vault-example.html" aria-current="page" class="active sidebar-link">Hashicorp Vault</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>Development</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/k8s-vault-webhook/guide/development.html" class="sidebar-link">Development Guide</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>Changelog</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/k8s-vault-webhook/guide/changelog.html" class="sidebar-link">v1.0</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="hashicorp-vault"><a href="#hashicorp-vault" class="header-anchor">#</a> Hashicorp Vault</h1> <p>Let's try to create a deployment to inject secrets directly from Vault. For example, purpose we are taking mysql as deployment and then we will try to set mysql root password using k8s-vault-webhook.</p> <p>We can use our <a href="https://github.com/OT-CONTAINER-KIT/k8s-vault-webhook/tree/master/example" target="_blank" rel="noopener noreferrer">example<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> folder.</p> <p>We have defined environment variable in mysql deployment something like this:-</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code>  <span class="token key atrule">template</span><span class="token punctuation">:</span>
+    <span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+      <span class="token key atrule">labels</span><span class="token punctuation">:</span>
+        <span class="token key atrule">app</span><span class="token punctuation">:</span> k8s<span class="token punctuation">-</span>vault<span class="token punctuation">-</span>webhook
+        <span class="token key atrule">tier</span><span class="token punctuation">:</span> mysql
+      <span class="token key atrule">annotations</span><span class="token punctuation">:</span>
+        <span class="token key atrule">vault.opstree.secret.manager/enabled</span><span class="token punctuation">:</span> <span class="token string">&quot;true&quot;</span>
+        <span class="token key atrule">vault.opstree.secret.manager/path</span><span class="token punctuation">:</span> secret/mysql
+        <span class="token key atrule">vault.opstree.secret.manager/role</span><span class="token punctuation">:</span> tester
+        <span class="token key atrule">vault.opstree.secret.manager/service</span><span class="token punctuation">:</span> http<span class="token punctuation">:</span>//vault.vault<span class="token punctuation">:</span><span class="token number">8200</span>
+    <span class="token key atrule">spec</span><span class="token punctuation">:</span>
+      <span class="token key atrule">serviceAccount</span><span class="token punctuation">:</span> tester
+      <span class="token key atrule">serviceAccountName</span><span class="token punctuation">:</span> tester
+      <span class="token key atrule">containers</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">image</span><span class="token punctuation">:</span> mysql<span class="token punctuation">:</span><span class="token number">5.6</span>
+        <span class="token key atrule">name</span><span class="token punctuation">:</span> mysql
+        <span class="token key atrule">env</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> MYSQL_ROOT_PASSWORD
+          <span class="token key atrule">value</span><span class="token punctuation">:</span> vault<span class="token punctuation">:</span>MYSQL_ROOT_PASSWORD
+        <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> MYSQL_PASSWORD
+          <span class="token key atrule">value</span><span class="token punctuation">:</span> vault<span class="token punctuation">:</span>MYSQL_ROOT_PASSWORD
+</code></pre></div><div class="language-shell extra-class"><pre class="language-shell"><code>$ kubectl apply -f example/mysql-deployment.yaml
+<span class="token punctuation">..</span>.
+deployment.apps/k8s-vault-webhook-mysql configured
+</code></pre></div><p>Verify the mysql pods are running or not by using <code>kubectl</code> command line.</p> <div class="language-shell extra-class"><pre class="language-shell"><code>$ kubectl get pods
+<span class="token punctuation">..</span>.
+NAME                                       READY   STATUS    RESTARTS   AGE
+k8s-vault-webhook-mysql-6d5df45956-nfmhv   <span class="token number">1</span>/1     Running   <span class="token number">0</span>          79s
+</code></pre></div><p>Now let's try to get inside the <code>mysql</code> pod and see if the Vault password is working fine or not.</p> <div class="language-shell extra-class"><pre class="language-shell"><code>$ kubectl <span class="token builtin class-name">exec</span> -it k8s-vault-webhook-mysql-6d5df45956-nfmhv <span class="token punctuation">\</span>
+    -- mysql -u root -ppassword -e <span class="token string">&quot;show databases;&quot;</span>
+<span class="token punctuation">..</span>.
+Warning: Using a password on the <span class="token builtin class-name">command</span> line interface can be insecure.
++--------------------+
+<span class="token operator">|</span> Database           <span class="token operator">|</span>
++--------------------+
+<span class="token operator">|</span> information_schema <span class="token operator">|</span>
+<span class="token operator">|</span> mysql              <span class="token operator">|</span>
+<span class="token operator">|</span> performance_schema <span class="token operator">|</span>
++--------------------+
+</code></pre></div><p>Also, try to check the value in environment variable of MySQL pod.</p> <div class="language-shell extra-class"><pre class="language-shell"><code>$ kubectl <span class="token builtin class-name">exec</span> -it k8s-vault-webhook-mysql-6d5df45956-nfmhv <span class="token punctuation">\</span>
+    -- <span class="token function">env</span> <span class="token operator">|</span> <span class="token function">grep</span> MYSQL_ROOT_PASSWORD
+<span class="token punctuation">..</span>.
+<span class="token assign-left variable">MYSQL_ROOT_PASSWORD</span><span class="token operator">=</span>vault:MYSQL_ROOT_PASSWORD
+<span class="token assign-left variable">MYSQL_PASSWORD</span><span class="token operator">=</span>vault:MYSQL_ROOT_PASSWORD
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/k8s-vault-webhook/guide/hashicorp-vault.html" class="prev">
+        Hashicorp Vault
+      </a></span> <span class="next"><a href="/k8s-vault-webhook/guide/development.html">
+        Development Guide
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/k8s-vault-webhook/assets/js/app.d06077b7.js" defer></script><script src="/k8s-vault-webhook/assets/js/2.b9863d1e.js" defer></script><script src="/k8s-vault-webhook/assets/js/19.1eb89540.js" defer></script>
+  </body>
+</html>

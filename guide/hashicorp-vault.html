@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Hashicorp Vault | K8s Vault Webhook</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    
+    <meta name="description" content="A k8s vault webhook is a Kubernetes webhook that can inject secrets into Kubernetes resources by connecting to multiple secret managers">
+    <meta name="theme-color" content="#0065b3">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    
+    <link rel="preload" href="/k8s-vault-webhook/assets/css/0.styles.8ed90290.css" as="style"><link rel="preload" href="/k8s-vault-webhook/assets/js/app.d06077b7.js" as="script"><link rel="preload" href="/k8s-vault-webhook/assets/js/2.b9863d1e.js" as="script"><link rel="preload" href="/k8s-vault-webhook/assets/js/8.28c8b37e.js" as="script"><link rel="prefetch" href="/k8s-vault-webhook/assets/js/10.a430fe2f.js"><link rel="prefetch" href="/k8s-vault-webhook/assets/js/11.85fa9005.js"><link rel="prefetch" href="/k8s-vault-webhook/assets/js/12.6204fd4d.js"><link rel="prefetch" href="/k8s-vault-webhook/assets/js/13.f202ebf5.js"><link rel="prefetch" href="/k8s-vault-webhook/assets/js/14.7093dabc.js"><link rel="prefetch" href="/k8s-vault-webhook/assets/js/15.0a417a24.js"><link rel="prefetch" href="/k8s-vault-webhook/assets/js/16.3f9e3a08.js"><link rel="prefetch" href="/k8s-vault-webhook/assets/js/17.695da34d.js"><link rel="prefetch" href="/k8s-vault-webhook/assets/js/18.dec35fa4.js"><link rel="prefetch" href="/k8s-vault-webhook/assets/js/19.1eb89540.js"><link rel="prefetch" href="/k8s-vault-webhook/assets/js/20.e1a5dace.js"><link rel="prefetch" href="/k8s-vault-webhook/assets/js/21.79c5d091.js"><link rel="prefetch" href="/k8s-vault-webhook/assets/js/22.8363e432.js"><link rel="prefetch" href="/k8s-vault-webhook/assets/js/3.f4f29689.js"><link rel="prefetch" href="/k8s-vault-webhook/assets/js/4.0f54aa6c.js"><link rel="prefetch" href="/k8s-vault-webhook/assets/js/5.2cd5c4b4.js"><link rel="prefetch" href="/k8s-vault-webhook/assets/js/6.a9b463bd.js"><link rel="prefetch" href="/k8s-vault-webhook/assets/js/7.c87ef5dd.js"><link rel="prefetch" href="/k8s-vault-webhook/assets/js/9.59406413.js">
+    <link rel="stylesheet" href="/k8s-vault-webhook/assets/css/0.styles.8ed90290.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/k8s-vault-webhook/" class="home-link router-link-active"><!----> <span class="site-name">K8s Vault Webhook</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/k8s-vault-webhook/guide/" class="nav-link router-link-active">
+  Guide
+</a></div><div class="nav-item"><a href="https://opstree.com" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  OpsTree
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <a href="https://github.com/OT-CONTAINER-KIT/k8s-vault-webhook" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/k8s-vault-webhook/guide/" class="nav-link router-link-active">
+  Guide
+</a></div><div class="nav-item"><a href="https://opstree.com" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  OpsTree
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <a href="https://github.com/OT-CONTAINER-KIT/k8s-vault-webhook" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>Guide</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/k8s-vault-webhook/guide/" aria-current="page" class="sidebar-link">Introduction</a></li><li><a href="/k8s-vault-webhook/guide/secret-manager.html" class="sidebar-link">Secret Manager</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>Getting Started</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/k8s-vault-webhook/guide/installation.html" class="sidebar-link">Installation</a></li><li><a href="/k8s-vault-webhook/guide/configuration.html" class="sidebar-link">Configuration</a></li><li><a href="/k8s-vault-webhook/guide/annotations.html" class="sidebar-link">Annotations</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Integration</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/k8s-vault-webhook/guide/hashicorp-vault.html" aria-current="page" class="active sidebar-link">Hashicorp Vault</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/k8s-vault-webhook/guide/hashicorp-vault.html#consul-setup" class="sidebar-link">Consul Setup</a></li><li class="sidebar-sub-header"><a href="/k8s-vault-webhook/guide/hashicorp-vault.html#vault-setup" class="sidebar-link">Vault Setup</a></li><li class="sidebar-sub-header"><a href="/k8s-vault-webhook/guide/hashicorp-vault.html#vault-configuration" class="sidebar-link">Vault Configuration</a></li></ul></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>Examples</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/k8s-vault-webhook/guide/hashicorp-vault-example.html" class="sidebar-link">Hashicorp Vault</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>Development</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/k8s-vault-webhook/guide/development.html" class="sidebar-link">Development Guide</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>Changelog</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/k8s-vault-webhook/guide/changelog.html" class="sidebar-link">v1.0</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="hashicorp-vault"><a href="#hashicorp-vault" class="header-anchor">#</a> Hashicorp Vault</h1> <p>For integrating Hashicorp Vault with the K8s Vault Webhook, first we need to setup Hashicorp Vault inside or outside the Kubernetes cluster.</p> <p>Here we will talk about the integration of Vault inside Kubernetes.</p> <h2 id="consul-setup"><a href="#consul-setup" class="header-anchor">#</a> Consul Setup</h2> <p>But before setting up Vault, we have to setup a key-value store for it. We are going to use <a href="https://consul.io/" target="_blank" rel="noopener noreferrer">Hashicorp Consul<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> for our datastore.</p> <p>Add the HashiCorp Helm Repository:</p> <div class="language-shell extra-class"><pre class="language-shell"><code>$ helm repo <span class="token function">add</span> hashicorp https://helm.releases.hashicorp.com
+<span class="token punctuation">..</span>.
+<span class="token string">&quot;hashicorp&quot;</span> has been added to your repositories
+</code></pre></div><p>Ensure you have access to the consul chart:</p> <div class="language-shell extra-class"><pre class="language-shell"><code>$ helm search repo hashicorp/consul
+<span class="token punctuation">..</span>.
+NAME                CHART VERSION   APP VERSION DESCRIPTION
+hashicorp/consul    <span class="token number">0.20</span>.1          <span class="token number">1.7</span>.2       Official HashiCorp Consul Chart
+</code></pre></div><p>Now you’re ready to install Consul! To install Consul with the default configuration using Helm 3 run:</p> <div class="language-shell extra-class"><pre class="language-shell"><code>$ helm <span class="token function">install</span> consul hashicorp/consul <span class="token punctuation">\</span>
+    --set global.name<span class="token operator">=</span>consul --namespace vault
+<span class="token punctuation">..</span>.
+LAST DEPLOYED: Mon May  <span class="token number">3</span> <span class="token number">20</span>:57:16 <span class="token number">2021</span>
+NAMESPACE: vault
+STATUS: deployed
+REVISION: <span class="token number">1</span>
+NOTES:
+Thank you <span class="token keyword">for</span> installing HashiCorp Consul<span class="token operator">!</span>
+
+Now that you have deployed Consul, you should <span class="token function">look</span> over the docs on using 
+Consul with Kubernetes available here: 
+
+https://www.consul.io/docs/platform/k8s/index.html
+
+
+Your release is named consul.
+
+To learn <span class="token function">more</span> about the release, run:
+
+  $ helm status consul
+  $ helm get all consul
+</code></pre></div><p>Let’s verify the consul pods.</p> <div class="language-shell extra-class"><pre class="language-shell"><code>$ kubectl get pods -n vault -l <span class="token assign-left variable">release</span><span class="token operator">=</span>consul
+<span class="token punctuation">..</span>.
+NAME              READY   STATUS    RESTARTS   AGE
+consul-server-2   <span class="token number">1</span>/1     Running   <span class="token number">0</span>          50s
+consul-server-0   <span class="token number">1</span>/1     Running   <span class="token number">0</span>          50s
+consul-server-1   <span class="token number">1</span>/1     Running   <span class="token number">0</span>          50s
+consul-5crwc      <span class="token number">1</span>/1     Running   <span class="token number">0</span>          51s
+consul-k4hn5      <span class="token number">1</span>/1     Running   <span class="token number">0</span>          51s
+consul-jldb8      <span class="token number">1</span>/1     Running   <span class="token number">0</span>          51s
+</code></pre></div><h2 id="vault-setup"><a href="#vault-setup" class="header-anchor">#</a> Vault Setup</h2> <p>Once the consul cluster is ready, let’s try to install vault cluster with HA mode. Also we will change the datastore of vault to consul.</p> <div class="language-shell extra-class"><pre class="language-shell"><code>$ <span class="token function">cat</span> <span class="token operator">&lt;&lt;</span> <span class="token string">EOF<span class="token bash punctuation"> <span class="token operator">&gt;</span> ./override-values.yaml</span>
+server:
+  ha:
+    enabled: true
+    replicas: 3
+    config: |
+      ui = true
+
+      listener &quot;tcp&quot; {
+          tls_disable = 1
+          address = &quot;[::]:8200&quot;
+          cluster_address = &quot;[::]:8201&quot;
+      }
+
+      storage &quot;consul&quot; {
+          path = &quot;vault&quot;
+          address = &quot;consul-server:8500&quot;
+      }
+EOF</span>
+</code></pre></div><div class="language-shell extra-class"><pre class="language-shell"><code>$ helm <span class="token function">install</span> vault -f override-values.yaml <span class="token punctuation">\</span>
+    hashicorp/vault --namespace vault
+<span class="token punctuation">..</span>.
+NAME: vault
+LAST DEPLOYED: Mon May  <span class="token number">3</span> <span class="token number">21</span>:00:37 <span class="token number">2021</span>
+NAMESPACE: vault
+STATUS: deployed
+REVISION: <span class="token number">2</span>
+TEST SUITE: None
+NOTES:
+Thank you <span class="token keyword">for</span> installing HashiCorp Vault<span class="token operator">!</span>
+
+Now that you have deployed Vault, you should <span class="token function">look</span> over the docs on using
+Vault with Kubernetes available here:
+
+https://www.vaultproject.io/docs/
+
+
+Your release is named vault. To learn <span class="token function">more</span> about the release, try:
+
+  $ helm status vault
+  $ helm get manifest vault
+</code></pre></div><div class="language-shell extra-class"><pre class="language-shell"><code>$ kubectl get pods -n vault -l app.kubernetes.io/instance<span class="token operator">=</span>vault
+<span class="token punctuation">..</span>.
+NAME                                    READY   STATUS    RESTARTS   AGE
+vault-agent-injector-77fbb4d4f8-mwngm   <span class="token number">1</span>/1     Running   <span class="token number">0</span>          30m
+vault-2                                 <span class="token number">0</span>/1     Running   <span class="token number">0</span>          2m24s
+vault-0                                 <span class="token number">0</span>/1     Running   <span class="token number">0</span>          2m24s
+vault-1                                 <span class="token number">0</span>/1     Running   <span class="token number">0</span>          2m24s
+</code></pre></div><p><strong>Note:- You will see your vault pods are not in Ready state because vault is still sealed. We need to unseal it before using it.</strong></p> <div class="language-shell extra-class"><pre class="language-shell"><code>$ kubectl <span class="token builtin class-name">exec</span> -it vault-0 -n vault -- vault operator init
+<span class="token punctuation">..</span>.
+Unseal Key <span class="token number">1</span>: mK1PeGrP+A+QidoKzsYIpaAhszwaMCGd0dUMGZ1JWWoQ
+Unseal Key <span class="token number">2</span>: q2bazJZReOhY2yfJmJ8puS2FLF4mpWqlE6umws4M2lwl
+Unseal Key <span class="token number">3</span>: fnpqx2xpAtI4iTU8iTA3uFM5xP/yDqnsPMsDzVTEyqPa
+Unseal Key <span class="token number">4</span>: I2D1KeIA3lIqdlodRL1AeFBmvBoy92mg8kno3QD0mKN0
+Unseal Key <span class="token number">5</span>: cNpXnigDnm/djUED5UE0nhAc3wXrfvIDKWQoVgzn5X5b
+
+Initial Root Token: s.XP91VwITtMaMhiL1JMHzFpSR
+
+Vault initialized with <span class="token number">5</span> key shares and a key threshold of <span class="token number">3</span>. Please securely
+distribute the key shares printed above. When the Vault is re-sealed,
+restarted, or stopped, you must supply at least <span class="token number">3</span> of these keys to unseal it
+before it can start servicing requests.
+
+Vault does not store the generated master key. Without at least <span class="token number">3</span> key to
+reconstruct the master key, Vault will remain permanently sealed<span class="token operator">!</span>
+
+It is possible to generate new unseal keys, provided you have a quorum of
+existing unseal keys shares. See <span class="token string">&quot;vault operator rekey&quot;</span> <span class="token keyword">for</span> <span class="token function">more</span> information.
+</code></pre></div><p><strong>Note:- Save the output at a special secure place, because this will be required to login in Vault as root user. Use first three unseal tokens to unseal the vault.</strong></p> <div class="language-shell extra-class"><pre class="language-shell"><code>$ kubectl <span class="token builtin class-name">exec</span> -it vault-0 -n vault <span class="token punctuation">\</span>
+    -- vault operator unseal mK1PeGrP+A+QidoKzsYIpaAhszwaMCGd0dUMGZ1JWWoQ
+$ kubectl <span class="token builtin class-name">exec</span> -it vault-0 -n vault <span class="token punctuation">\</span>
+    -- vault operator unseal q2bazJZReOhY2yfJmJ8puS2FLF4mpWqlE6umws4M2lwl
+$ kubectl <span class="token builtin class-name">exec</span> -it vault-0 -n vault <span class="token punctuation">\</span>
+    -- vault operator unseal fnpqx2xpAtI4iTU8iTA3uFM5xP/yDqnsPMsDzVTEyqPa
+<span class="token punctuation">..</span>.
+Key                    Value
+---                    -----
+Seal Type              shamir
+Initialized            <span class="token boolean">true</span>
+Sealed                 <span class="token boolean">false</span>
+Total Shares           <span class="token number">5</span>
+Threshold              <span class="token number">3</span>
+Version                <span class="token number">1.7</span>.0
+Storage Type           consul
+Cluster Name           vault-cluster-57a810a1
+Cluster ID             2ec3fced-cf4c-d59c-74ba-78d57f4bb94e
+HA Enabled             <span class="token boolean">true</span>
+HA Cluster             n/a
+HA Mode                standby
+Active Node Address    <span class="token operator">&lt;</span>none<span class="token operator">&gt;</span>
+</code></pre></div><p><strong>Repeat the same unseal steps for vault-1 and vault-2 as well</strong></p> <p>The pods will become ready as soon as vault is unsealed.</p> <div class="language-shell extra-class"><pre class="language-shell"><code>$ kubectl get pods -n vault -l app.kubernetes.io/instance<span class="token operator">=</span>vault
+<span class="token punctuation">..</span>.
+NAME                                    READY   STATUS    RESTARTS   AGE
+vault-agent-injector-77fbb4d4f8-l4x45   <span class="token number">1</span>/1     Running   <span class="token number">0</span>          18m
+vault-0                                 <span class="token number">1</span>/1     Running   <span class="token number">0</span>          18m
+vault-1                                 <span class="token number">1</span>/1     Running   <span class="token number">0</span>          18m
+vault-2                                 <span class="token number">1</span>/1     Running   <span class="token number">0</span>          18m
+</code></pre></div><h2 id="vault-configuration"><a href="#vault-configuration" class="header-anchor">#</a> Vault Configuration</h2> <p>For Vault configuration, we are going to use vault-cli and vault-ui both. Download and install vault-cli on your local system. It can be downloaded from <a href="https://www.vaultproject.io/downloads" target="_blank" rel="noopener noreferrer">here<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>.</p> <p>First, forward the port of vault to your local system.</p> <div class="language-shell extra-class"><pre class="language-shell"><code>$ kubectl port-forward vault-0 <span class="token number">8200</span>:8200 -n vault
+<span class="token punctuation">..</span>.
+Forwarding from <span class="token number">127.0</span>.0.1:8200 -<span class="token operator">&gt;</span> <span class="token number">8200</span>
+Forwarding from <span class="token punctuation">[</span>::1<span class="token punctuation">]</span>:8200 -<span class="token operator">&gt;</span> <span class="token number">8200</span>
+</code></pre></div><p>Login into the vault using the root token which we got using init command.</p> <div class="language-shell extra-class"><pre class="language-shell"><code>$ <span class="token builtin class-name">export</span> <span class="token assign-left variable">VAULT_ADDR</span><span class="token operator">=</span>http://127.0.0.1:8200
+$ vault login
+<span class="token punctuation">..</span>.
+Token <span class="token punctuation">(</span>will be hidden<span class="token punctuation">)</span>: 
+Success<span class="token operator">!</span> You are now authenticated. The token information displayed below
+is already stored <span class="token keyword">in</span> the token helper. You <span class="token keyword">do</span> NOT need to run <span class="token string">&quot;vault login&quot;</span>
+again. Future Vault requests will automatically use this token.
+
+Key                  Value
+---                  -----
+token                s.XP91VwITtMaMhiL1JMHzFpSR
+token_accessor       dK1rauoPrf0nNxMb8wRfwz1i
+token_duration       ∞
+token_renewable      <span class="token boolean">false</span>
+token_policies       <span class="token punctuation">[</span><span class="token string">&quot;root&quot;</span><span class="token punctuation">]</span>
+identity_policies    <span class="token punctuation">[</span><span class="token punctuation">]</span>
+policies             <span class="token punctuation">[</span><span class="token string">&quot;root&quot;</span><span class="token punctuation">]</span>
+</code></pre></div><p>Enable the Kubernetes auth backend in the vault cluster</p> <div class="language-shell extra-class"><pre class="language-shell"><code>$ vault auth <span class="token builtin class-name">enable</span> kubernetes
+<span class="token punctuation">..</span>.
+Success<span class="token operator">!</span> Enabled kubernetes auth method at: kubernetes/
+</code></pre></div><p>Create a file with name <code>vault-reviewer.yaml</code> which will have the service-account and cluster role access information.</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token punctuation">---</span>
+<span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> ServiceAccount
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> vault<span class="token punctuation">-</span>reviewer
+  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> vault
+<span class="token punctuation">---</span>
+<span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> rbac.authorization.k8s.io/v1beta1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> ClusterRoleBinding
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> role<span class="token punctuation">-</span>tokenreview<span class="token punctuation">-</span>binding
+  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> vault
+<span class="token key atrule">roleRef</span><span class="token punctuation">:</span>
+  <span class="token key atrule">apiGroup</span><span class="token punctuation">:</span> rbac.authorization.k8s.io
+  <span class="token key atrule">kind</span><span class="token punctuation">:</span> ClusterRole
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> system<span class="token punctuation">:</span>auth<span class="token punctuation">-</span>delegator
+<span class="token key atrule">subjects</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> <span class="token key atrule">kind</span><span class="token punctuation">:</span> ServiceAccount
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> vault<span class="token punctuation">-</span>reviewer
+  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> vault
+</code></pre></div><div class="language-shell extra-class"><pre class="language-shell"><code>$ kubectl apply -f vault-reviewer.yaml
+</code></pre></div><p>Configure Vault with the vault-reviewer token and Kubernetes CA to fetch secrets.</p> <div class="language-shell extra-class"><pre class="language-shell"><code>$ <span class="token assign-left variable">VAULT_SA_TOKEN_NAME</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>kubectl get sa vault-reviewer -n vault -o <span class="token assign-left variable">jsonpath</span><span class="token operator">=</span><span class="token string">&quot;{.secrets[*]['name']}&quot;</span><span class="token variable">)</span></span>
+
+$ <span class="token assign-left variable">SA_JWT_TOKEN</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>kubectl get secret -n vault <span class="token string">&quot;<span class="token variable">$VAULT_SA_TOKEN_NAME</span>&quot;</span> -o <span class="token assign-left variable">jsonpath</span><span class="token operator">=</span><span class="token string">&quot;{.data.token}&quot;</span> <span class="token operator">|</span> base64 --decode<span class="token punctuation">;</span> <span class="token builtin class-name">echo</span><span class="token variable">)</span></span>
+
+$ <span class="token assign-left variable">SA_CA_CRT</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>kubectl get secret -n vault <span class="token string">&quot;<span class="token variable">$VAULT_SA_TOKEN_NAME</span>&quot;</span> -o <span class="token assign-left variable">jsonpath</span><span class="token operator">=</span><span class="token string">&quot;{.data['ca\.crt']}&quot;</span> <span class="token operator">|</span> base64 --decode<span class="token punctuation">;</span> <span class="token builtin class-name">echo</span><span class="token variable">)</span></span>
+</code></pre></div><div class="language-shell extra-class"><pre class="language-shell"><code>$ vault <span class="token function">write</span> auth/kubernetes/config <span class="token assign-left variable">token_reviewer_jwt</span><span class="token operator">=</span><span class="token string">&quot;<span class="token variable">$SA_JWT_TOKEN</span>&quot;</span> <span class="token assign-left variable">kubernetes_host</span><span class="token operator">=</span>https://kubernetes.default <span class="token assign-left variable">kubernetes_ca_cert</span><span class="token operator">=</span><span class="token string">&quot;<span class="token variable">$SA_CA_CRT</span>&quot;</span>
+<span class="token punctuation">..</span>.
+Success<span class="token operator">!</span> Data written to: auth/kubernetes/config
+</code></pre></div><p>Create a policy in vault for Kubernetes to read the secrets.</p> <div class="language-hcl extra-class"><pre class="language-hcl"><code>path <span class="token string">&quot;secret/*&quot;</span> <span class="token punctuation">{</span>
+  <span class="token property">capabilities</span> <span class="token punctuation">=</span> <span class="token punctuation">[</span><span class="token string">&quot;read&quot;</span>, <span class="token string">&quot;list&quot;</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre></div><div class="language-shell extra-class"><pre class="language-shell"><code>$ vault policy <span class="token function">write</span> k8s_policy policy.hcl
+</code></pre></div><p>Create a service-account which can be associated with the application pod to fetch the secrets.</p> <div class="language-shell extra-class"><pre class="language-shell"><code>$ kubectl create sa tester
+</code></pre></div><p>Associate the role to service-account.</p> <div class="language-shell extra-class"><pre class="language-shell"><code>$ vault <span class="token function">write</span> auth/kubernetes/role/tester <span class="token punctuation">\</span>
+  <span class="token assign-left variable">bound_service_account_names</span><span class="token operator">=</span>tester <span class="token punctuation">\</span>
+  <span class="token assign-left variable">bound_service_account_namespaces</span><span class="token operator">=</span>default <span class="token punctuation">\</span>
+  <span class="token assign-left variable">policies</span><span class="token operator">=</span>k8s_policy <span class="token punctuation">\</span>
+  <span class="token assign-left variable">ttl</span><span class="token operator">=</span>1h
+</code></pre></div><p>Let’s try to put some secret inside Vault.</p> <div class="language-shell extra-class"><pre class="language-shell"><code>$ vault kv put secret/mysql <span class="token assign-left variable">MYSQL_ROOT_PASSWORD</span><span class="token operator">=</span>password
+</code></pre></div><p><img src="/k8s-vault-webhook/assets/img/vault-ui.c27472ec.png" alt=""></p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/k8s-vault-webhook/guide/annotations.html" class="prev">
+        Annotations
+      </a></span> <span class="next"><a href="/k8s-vault-webhook/guide/hashicorp-vault-example.html">
+        Hashicorp Vault
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/k8s-vault-webhook/assets/js/app.d06077b7.js" defer></script><script src="/k8s-vault-webhook/assets/js/2.b9863d1e.js" defer></script><script src="/k8s-vault-webhook/assets/js/8.28c8b37e.js" defer></script>
+  </body>
+</html>
