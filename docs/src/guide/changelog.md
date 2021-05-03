@@ -1,4 +1,4 @@
-## v1.0
+### v1.0
 **April 11, 2021**
 
 **:tada: [Features Added]**

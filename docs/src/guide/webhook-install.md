@@ -5,7 +5,7 @@ k8s-vault-webhook can easily get installed by using [Helm](https://helm.sh/) . W
 If you want to pass your custom values file while installing the chart, you can find the values file [here](https://github.com/OT-CONTAINER-KIT/helm-charts/blob/main/charts/k8s-vault-webhook/values.yaml).
 
 ```shell
-$ helm repo add ot-helm https://github.com/OT-CONTAINER-KIT/helm-charts
+$ helm repo add ot-helm https://ot-container-kit.github.io/helm-charts
 
 $ helm upgrade k8s-vault-webhook ot-helm/k8s-vault-webhook --namespace vault --install
 

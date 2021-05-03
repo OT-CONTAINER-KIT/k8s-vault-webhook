@@ -50,17 +50,32 @@ module.exports = {
           collapsable: false,
           children: [
             '',
-            'vault-setup',
-            'vault-config',
-            'webhook-install',
+            'secret-manager',
+            // 'vault-config',
+            // 'webhook-install',
           ]
         },
         {
-          title: 'Annotations',
+          title: 'Getting Started',
           collapsable: false,
           children: [
+            'installation',
+            'configuration',
             'annotations',
-            'vault-annotations',
+          ]
+        },
+        {
+          title: 'Integration',
+          collapsable: false,
+          children: [
+            'hashicorp-vault',
+          ]
+        },
+        {
+          title: 'Examples',
+          collapsable: false,
+          children: [
+            'hashicorp-vault-example',
           ]
         },
         {
