@@ -61,32 +61,33 @@ module.exports = {
           children: [
             'installation',
             'configuration',
+            'annotations',
             // 'vault-config',
             // 'webhook-install',
           ]
         },
-        {
-          title: 'Annotations',
-          collapsable: false,
-          children: [
-            'annotations',
-            'vault-annotations',
-          ]
-        },
-        {
-          title: 'Development',
-          collapsable: false,
-          children: [
-            'development',
-          ]
-        },
-        {
-          title: 'Changelog',
-          collapsable: false,
-          children: [
-            'changelog',
-          ]
-        }
+        // {
+        //   title: 'Annotations',
+        //   collapsable: false,
+        //   children: [
+        //     'annotations',
+        //     'vault-annotations',
+        //   ]
+        // },
+        // {
+        //   title: 'Development',
+        //   collapsable: false,
+        //   children: [
+        //     'development',
+        //   ]
+        // },
+        // {
+        //   title: 'Changelog',
+        //   collapsable: false,
+        //   children: [
+        //     'changelog',
+        //   ]
+        // }
       ],
     }
   },
