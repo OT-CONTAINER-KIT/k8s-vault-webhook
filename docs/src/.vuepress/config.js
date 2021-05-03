@@ -62,32 +62,36 @@ module.exports = {
             'installation',
             'configuration',
             'annotations',
-            // 'vault-config',
-            // 'webhook-install',
           ]
         },
-        // {
-        //   title: 'Annotations',
-        //   collapsable: false,
-        //   children: [
-        //     'annotations',
-        //     'vault-annotations',
-        //   ]
-        // },
-        // {
-        //   title: 'Development',
-        //   collapsable: false,
-        //   children: [
-        //     'development',
-        //   ]
-        // },
-        // {
-        //   title: 'Changelog',
-        //   collapsable: false,
-        //   children: [
-        //     'changelog',
-        //   ]
-        // }
+        {
+          title: 'Integration',
+          collapsable: false,
+          children: [
+            'hashicorp-vault',
+          ]
+        },
+        {
+          title: 'Examples',
+          collapsable: false,
+          children: [
+            'hashicorp-vault-example',
+          ]
+        },
+        {
+          title: 'Development',
+          collapsable: false,
+          children: [
+            'development',
+          ]
+        },
+        {
+          title: 'Changelog',
+          collapsable: false,
+          children: [
+            'changelog',
+          ]
+        }
       ],
     }
   },
