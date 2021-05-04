@@ -203,15 +203,15 @@ func (mw *mutatingWebhook) mutateContainers(containers []corev1.Container, podSp
 	for i, container := range containers {
 		var envVars []corev1.EnvVar
 		if len(container.EnvFrom) > 0 {
-			envFrom, err := mw.lookForEnvFrom(container.EnvFrom, ns)
+			envFrom, err := mw.lookForEnvFrom(container.EnvFrom, ns) //nolint
 			if err != nil {
 				return false, err
 			}
-			envVars = append(envVars, envFrom...)
+			envVars = append(envVars, envFrom...) //nolint
 		}
 		for _, env := range container.Env {
 			if hasSecretPrefix(env.Value) {
-				envVars = append(envVars, env)
+				envVars = append(envVars, env) //nolint
 			}
 			if env.ValueFrom != nil {
 				valueFrom, err := mw.lookForValueFrom(env, ns)
@@ -221,7 +221,7 @@ func (mw *mutatingWebhook) mutateContainers(containers []corev1.Container, podSp
 				if valueFrom == nil {
 					continue
 				}
-				envVars = append(envVars, *valueFrom)
+				envVars = append(envVars, *valueFrom) //nolint
 			}
 		}
 
