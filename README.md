@@ -1,8 +1,14 @@
-<div align="center">
-    <img src="./static/k8s-vault-webhook-logo.svg" height="120" width="120">
-    <h2 style="color:#339FFF">K8s Vault Webhook</h2>
-    <h5 style="color:#33BEFF;padding-left: 55px;">By Opstree Solutions</h5>
-</div>
+<p align="center">
+    <a>
+        <img src="./static/k8s-vault-webhook-logo.svg" height="120" width="120">
+    </a>
+    <a>
+        <h2 style="color:#339FFF">K8s Vault Webhook</h2>
+    </a>
+    <a>
+        <h5 style="color:#33BEFF;padding-left: 55px;">By Opstree Solutions</h5>
+    </a>
+</p>
 
 <p align="center">
   <a href="https://github.com/OT-CONTAINER-KIT/k8s-vault-webhook">
