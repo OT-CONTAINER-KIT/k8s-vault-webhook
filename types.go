@@ -8,7 +8,7 @@ import (
 
 type secretManagerConfig struct {
 	vault
-	explicitSecrets bool // only get secrets that match the prefix `secret:`
+	// explicitSecrets bool // only get secrets that match the prefix `secret:`
 }
 
 type mutatingWebhook struct {
