@@ -8,20 +8,20 @@ import (
 
 type vault struct {
 	config struct {
-		enabled                        bool
-		addr                           string
-		tlsSecretName                  string
-		vaultCACert                    string
-		path                           string
-		role                           string
-		tokenPath                      string
-		authPath                       string
-		backend                        string
-		kubernetesBackend              string
-		useSecretNamesAsKeys           bool
+		enabled              bool
+		addr                 string
+		tlsSecretName        string
+		vaultCACert          string
+		path                 string
+		role                 string
+		tokenPath            string
+		authPath             string
+		backend              string
+		kubernetesBackend    string
+		useSecretNamesAsKeys bool
 		// gcpServiceAccountKeySecretName string
-		version                        string
-		secretConfigs                  []string
+		version       string
+		secretConfigs []string
 	}
 }
 

@@ -1,8 +1,29 @@
-<div align="left">
+<div align="center">
     <img src="./static/k8s-vault-webhook-logo.svg" height="120" width="120">
+    <h2 style="color:#339FFF">K8s Vault Webhook</h2>
+    <h5 style="color:#33BEFF;padding-left: 55px;">By Opstree Solutions</h5>
 </div>
 
-## K8s Vault Webhook
+<p align="center">
+  <a href="https://github.com/OT-CONTAINER-KIT/k8s-vault-webhook">
+    <img src="https://github.com/OT-CONTAINER-KIT/k8s-vault-webhook/workflows/CI%20Pipeline/badge.svg" alt="Github CI">
+  </a>
+  <a href="https://goreportcard.com/report/github.com/OT-CONTAINER-KIT/k8s-vault-webhook">
+    <img src="https://goreportcard.com/badge/github.com/OT-CONTAINER-KIT/k8s-vault-webhook" alt="GoReportCard">
+  </a>
+  <a href="http://golang.org">
+    <img src="https://img.shields.io/github/go-mod/go-version/OT-CONTAINER-KIT/k8s-vault-webhook" alt="GitHub go.mod Go version (subdirectory of monorepo)">
+  </a>
+  <a href="http://golang.org">
+    <img src="https://img.shields.io/badge/Made%20with-Go-1f425f.svg" alt="made-with-Go">
+  </a>
+  <a href="https://quay.io/repository/opstree/k8s-vault-webhook">
+    <img src="https://img.shields.io/badge/container-ready-green" alt="Docker">
+  </a>
+  <a href="https://github.com/OT-CONTAINER-KIT/k8s-vault-webhook/master/LICENSE">
+    <img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" alt="License">
+  </a>
+</p>
 
 k8s-vault-webhook is a Kubernetes admission webhook which listen for the events related to Kubernetes resources for injecting secret directly from secret manager to pod, secret, and configmap.
 The motive of creating this project is to provide a dynamic secret injection to containers/pods running inside Kubernetes from different secret managers for enhanced security.
