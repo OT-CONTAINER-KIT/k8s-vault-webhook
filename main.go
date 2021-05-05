@@ -11,10 +11,10 @@ import (
 	"strconv"
 	"strings"
 
-	"k8s-vault-webhook/registry"
-	"k8s-vault-webhook/version"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
+	"k8s-vault-webhook/registry"
+	"k8s-vault-webhook/version"
 
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
@@ -257,7 +257,7 @@ func (mw *mutatingWebhook) mutateContainers(containers []corev1.Container, podSp
 			continue
 		}
 		mutated = true
-		
+
 		// add the volume mount for k8s-secret-injector
 		container.VolumeMounts = append(container.VolumeMounts, []corev1.VolumeMount{
 			{
