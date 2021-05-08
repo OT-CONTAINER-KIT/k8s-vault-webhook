@@ -10,7 +10,7 @@ There is not alot of configuration changes requires to deploy K8s Vault Webhook.
 |debug| debug logs for webhook | `false` |
 |image.pullPolicy| image pull policy | `IfNotPresent`|
 |image.repository| image repo that contains the admission server | `quay.io/opstree/k8s-vault-webhook` |
-|image.tag| image tag for admission server | `1.0` |
+|image.tag| image tag for admission server | `2.0` |
 |image.imagePullSecrets| image pull secrets for private repositories | `[]` |
 |namespaceSelector| namespace selector to use, will limit webhook scope | `{}` |
 |nodeSelector|node selector to use | `{}` |
@@ -24,7 +24,7 @@ There is not alot of configuration changes requires to deploy K8s Vault Webhook.
 |rbac.enabled |use rbac | `true` |
 |rbac.psp.enabled |use pod security policy | `true` |
 |env.VAULT_IMAGE | vault image  | `vault:latest` |
-|env.SECRET_CONSUMER_ENV_IMAGE | vault-env image  | `quay.io/opstree/k8s-secret-injector:1.0` |
+|env.K8s_SECRET_INJECTOR_IMAGE | vault-env image  | `quay.io/opstree/k8s-secret-injector:2.0` |
 |volumes |extra volume definitions  | `[]` |
 |volumeMounts |extra volume mounts  | `[]` |
 | configMapMutation                | enable injecting values from Vault to ConfigMaps                             | `false`                             |

@@ -461,7 +461,7 @@ func newK8SClient() (kubernetes.Interface, error) {
 }
 
 func init() {
-	viper.SetDefault("k8s_secret_injector_image", "quay.io/opstree/k8s-secret-injector:1.0")
+	viper.SetDefault("k8s_secret_injector_image", "quay.io/opstree/k8s-secret-injector:2.0")
 	viper.SetDefault("k8s_secret_injector_image_pull_policy", string(corev1.PullIfNotPresent))
 	viper.SetDefault("k8s_secret_injector_image_pull_secret_name", "")
 	viper.SetDefault("tls_cert_file", "")
