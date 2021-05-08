@@ -248,6 +248,11 @@ func (mw *mutatingWebhook) mutateContainers(containers []corev1.Container, podSp
 		container.Command = []string{"/k8s-secret/k8s-secret-injector"}
 		container.Args = args
 
+		if secretManagerConfig.aws.config.enabled {
+			container = secretManagerConfig.aws.mutateContainer(container)
+			mutationInProgress = true
+		}
+
 		if secretManagerConfig.vault.config.enabled {
 			container = secretManagerConfig.vault.mutateContainer(container)
 			mutationInProgress = true
@@ -336,6 +341,12 @@ func (mw *mutatingWebhook) parseSecretManagerConfig(obj metav1.Object) secretMan
 	var smCfg secretManagerConfig
 	annotations := obj.GetAnnotations()
 
+	smCfg.aws.config.enabled, _ = strconv.ParseBool(annotations[AnnotationAWSSecretManagerEnabled])
+	smCfg.aws.config.region = annotations[AnnotationAWSSecretManagerRegion]
+	smCfg.aws.config.roleARN = annotations[AnnotationAWSSecretManagerRoleARN]
+	smCfg.aws.config.secretName = annotations[AnnotationAWSSecretManagerSecretName]
+	smCfg.aws.config.previousVersion = annotations[AnnotationAWSSecretManagerPreviousVersion]
+
 	smCfg.vault.config.enabled, _ = strconv.ParseBool(annotations[AnnotationVaultEnabled])
 	smCfg.vault.config.addr = annotations[AnnotationVaultService]
 	smCfg.vault.config.path = annotations[AnnotationVaultSecretPath]
@@ -369,6 +380,16 @@ func (mw *mutatingWebhook) SecretsMutator(ctx context.Context, obj metav1.Object
 
 	switch v := obj.(type) {
 	case *corev1.Pod:
+		if smCfg.aws.config.enabled {
+			mw.logger.Infof("Using AWS Secret Manager")
+
+			if smCfg.aws.config.secretName == "" {
+				return true, fmt.Errorf("Error getting aws secret name - make sure you set the annotation %s on the Pod", AnnotationAWSSecretManagerSecretName)
+			}
+
+			return false, mw.mutatePod(v, smCfg, whcontext.GetAdmissionRequest(ctx).Namespace, whcontext.IsAdmissionRequestDryRun(ctx))
+		}
+
 		if smCfg.vault.config.enabled {
 			var err error
 			mw.logger.Info("Using Vault Secret Manager")
@@ -440,7 +461,7 @@ func newK8SClient() (kubernetes.Interface, error) {
 }
 
 func init() {
-	viper.SetDefault("k8s_secret_injector_image", "quay.io/opstree/k8s-secret-injector:1.0")
+	viper.SetDefault("k8s_secret_injector_image", "quay.io/opstree/k8s-secret-injector:2.0")
 	viper.SetDefault("k8s_secret_injector_image_pull_policy", string(corev1.PullIfNotPresent))
 	viper.SetDefault("k8s_secret_injector_image_pull_secret_name", "")
 	viper.SetDefault("tls_cert_file", "")

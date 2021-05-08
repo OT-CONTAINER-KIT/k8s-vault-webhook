@@ -31,10 +31,10 @@ Documentation is available here:- https://ot-container-kit.github.io/k8s-vault-w
 The secret managers which are currently supported:-
 
 - **[Hashicorp Vault](https://www.vaultproject.io/)**
+- **[AWS Secret Manager](https://aws.amazon.com/secrets-manager/)**
 
 There are some secret managers which are planned to be implemented in future.
 
-- **[AWS Secret Manager](https://aws.amazon.com/secrets-manager/)**
 - **[Azure Key Vault](https://azure.microsoft.com/en-in/services/key-vault/)**
 - **[GCP Secret Manager](https://cloud.google.com/secret-manager)**
 
@@ -43,6 +43,8 @@ There are some secret managers which are planned to be implemented in future.
 - Authentication to Hashicorp vault using Kubernetes service-account
 - RBAC implementation of vault using different policies of vault and association of policy with service-account
 - Inject secret directly to pods/containers running inside Kubernetes
+- Inject secret directly to pods/containers from AWS Secret Manager
+- Authentication with AWS Secret Manager with access key and iam role
 - Support regex to inject all secrets from a certain path of Vault
 - Inject secrets directly to the process of container, i.e. after the injection you cannot read secrets from the environment variable
 
@@ -63,16 +65,6 @@ $ helm upgrade k8s-vault-webhook ot-helm/k8s-vault-webhook --namespace <namespac
 ```
 
 If you want to pass your custom values file while installing the chart, you can find the values file [here](https://github.com/OT-CONTAINER-KIT/helm-charts/blob/main/charts/k8s-vault-webhook/values.yaml)
-
-### Annotations
-
-|**Name**|**Description**|**Required**|**Default**|
-|--------|---------------|------------|-----------|
-|`vault.opstree.secret.manager/enabled`| Enables the vault secret manager | - | false |
-|`vault.opstree.secret.manager/service`| Vault cluster address with http prefix | yes | - |
-|`vault.opstree.secret.manager/tls-secret`| Vault TLS secret name if vault is configured on TLS | no | - |
-|`vault.opstree.secret.manager/role`| Vault role created with Kubernetes serviceaccount | yes | - |
-|`vault.opstree.secret.manager/path`| Path of the secret in vault | no | - |
 
 ### Quickstart
 

@@ -1,3 +1,12 @@
+### v2.0
+**May 8, 2021**
+
+**:tada: [Features Added]**
+
+- Added AWS Secret Manager support
+- Inject secret directly to pods/containers from AWS Secret Manager
+- Authentication with AWS Secret Manager with access key and iam role 
+
 ### v1.0
 **April 11, 2021**
 

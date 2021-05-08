@@ -1,0 +1,44 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-aws-mysql
+  labels:
+    app: k8s-aws-mysql
+spec:
+  selector:
+    matchLabels:
+      app: k8s-aws-mysql
+      tier: mysql
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: k8s-aws-mysql
+        tier: mysql
+      annotations:
+        aws.opstree.secret.manager/enabled: "true"
+        aws.opstree.secret.manager/region: "us-west-2"
+# Use this role-arn if cluster is configured in AWS
+        # aws.opstree.secret.manager/role-arn: "arn:aws:iam::999999999999999:role/secretManager"
+        aws.opstree.secret.manager/secret-name: "test-secret"
+    spec:
+      containers:
+      - image: opstree/mysql:latest
+        name: mysql
+# If running outside AWS
+        env:
+        - name: AWS_ACCESS_KEY_ID
+          valueFrom:
+            secretKeyRef:
+              name: aws-secret
+              key: AWS_ACCESS_KEY_ID
+        - name: AWS_SECRET_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              name: aws-secret
+              key: AWS_SECRET_ACCESS_KEY
+        ports:
+        - containerPort: 3306
+          name: mysql

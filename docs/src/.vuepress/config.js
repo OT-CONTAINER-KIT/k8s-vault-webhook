@@ -69,6 +69,7 @@ module.exports = {
           collapsable: false,
           children: [
             'hashicorp-vault',
+            'aws-secret-manager',
           ]
         },
         {
@@ -76,6 +77,7 @@ module.exports = {
           collapsable: false,
           children: [
             'hashicorp-vault-example',
+            'aws-secret-manager-example',
           ]
         },
         {

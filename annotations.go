@@ -1,6 +1,21 @@
 package main
 
 const (
+	// AnnotationAWSSecretManagerEnabled if enabled it will use AWS secret manager
+	AnnotationAWSSecretManagerEnabled = "aws.opstree.secret.manager/enabled"
+
+	// AnnotationAWSSecretManagerRegion the region for which the secret manager is set
+	AnnotationAWSSecretManagerRegion = "aws.opstree.secret.manager/region"
+
+	// AnnotationAWSSecretManagerRoleARN if specified it will assume the role for fetching the secret
+	AnnotationAWSSecretManagerRoleARN = "aws.opstree.secret.manager/role-arn"
+
+	// AnnotationAWSSecretManagerSecretName aws secret manager secret name to fetch
+	AnnotationAWSSecretManagerSecretName = "aws.opstree.secret.manager/secret-name"
+
+	// AnnotationAWSSecretManagerPreviousVersion when used will retrive the previous version for the secret
+	// note that AWS only supports single previous version
+	AnnotationAWSSecretManagerPreviousVersion = "aws.opstree.secret.manager/previous-version"
 
 	// AnnotationVaultEnabled if enabled use vault as the secret manager
 	AnnotationVaultEnabled = "vault.opstree.secret.manager/enabled"
