@@ -6,10 +6,10 @@ Based on these annotations, the secrets will be mutated.
 The annotations which are currently supported:-
 
 - **[Hashicorp Vault](https://www.vaultproject.io/)**
+- **[AWS Secret Manager](https://aws.amazon.com/secrets-manager/)**
 
 There are some other annotations which are planned to be implemented in future.
 
-- **[AWS Secret Manager](https://aws.amazon.com/secrets-manager/)**
 - **[Azure Key Vault](https://azure.microsoft.com/en-in/services/key-vault/)**
 - **[GCP Secret Manager](https://cloud.google.com/secret-manager)**
 
@@ -29,3 +29,13 @@ The available annotations for k8s vault webhook are:-
 |`vault.opstree.secret.manager/secret-version` | Vault secret version (if using v2 secret engine) | Yes | - | 
 |`vault.opstree.secret.manager/use-secret-names-as-keys` | treat secret path ending with / as directory where secret name is the key and a single value in each | No | - |
 |`vault.opstree.secret.manager/auth-path`| alternate kubernetes backend auth path | No | `auth/kubernetes/login` |
+
+## AWS Annotations
+
+|**Name**|**Description**|**Required**|**Default**|
+|--------|---------------|------------|-----------|
+|`aws.secret.manager/enabled`| Enable the AWS secret manager | - | false |
+|`aws.secret.manager/region`| AWS secret manager region | no | us-east-1 |
+|`aws.secret.manager/role-arn`| AWS IAM Role to access the secret | no | |
+|`aws.secret.manager/secret-name`| Name of the AWS secret | no | |
+|`aws.secret.manager/previous-version`| If the secret is rotated, set to "true" | no | |

@@ -12,10 +12,10 @@ Documentation is available here:- [https://ot-container-kit.github.io/k8s-vault-
 The secret managers which are currently supported:-
 
 - **[Hashicorp Vault](https://www.vaultproject.io/)**
+- **[AWS Secret Manager](https://aws.amazon.com/secrets-manager/)**
 
 There are some secret managers which are planned to be implemented in future.
 
-- **[AWS Secret Manager](https://aws.amazon.com/secrets-manager/)**
 - **[Azure Key Vault](https://azure.microsoft.com/en-in/services/key-vault/)**
 - **[GCP Secret Manager](https://cloud.google.com/secret-manager)**
 
@@ -24,11 +24,21 @@ There are some secret managers which are planned to be implemented in future.
 - Authentication to Hashicorp vault using Kubernetes service-account
 - RBAC implementation of vault using different policies of vault and association of policy with service-account
 - Inject secret directly to pods/containers running inside Kubernetes
+- Inject secret directly to pods/containers from AWS Secret Manager
+- Authentication with AWS Secret Manager with access key and iam role
 - Support regex to inject all secrets from a certain path of Vault
 - Inject secrets directly to the process of container, i.e. after the injection you cannot read secrets from the environment variable
 
 ## Architecture
 
-<div align="center">
-    <img src="./images/k8s-vault-webhook-arc.png">
+### Hashicorp Vault
+
+<div align="center" style="padding-top: 25px;">
+    <img src="./images/k8s-vault-webhook-arc-vault.png">
+</div>
+
+### AWS Secret Manager
+
+<div align="center" style="padding-top: 25px;">
+    <img src="./images/k8s-vault-webhook-arc-aws.png">
 </div>

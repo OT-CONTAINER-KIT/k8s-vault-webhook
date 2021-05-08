@@ -25,6 +25,8 @@ Vault comes with various pluggable components called secrets engines and authent
 
 AWS Secrets Manager helps you protect secrets needed to access your applications, services, and IT resources. The service enables you to easily rotate, manage, and retrieve database credentials, API keys, and other secrets throughout their lifecycle.
 
+![](./images/aws-secret-manager-arc.jpg)
+
 ## Azure Key Vault
 
 Azure Key Vault is cloud service to securely store and accessing credentials such as API Keys, passwords, certificates or cryptographic keys.
