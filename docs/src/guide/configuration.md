@@ -24,7 +24,7 @@ There is not alot of configuration changes requires to deploy K8s Vault Webhook.
 |rbac.enabled |use rbac | `true` |
 |rbac.psp.enabled |use pod security policy | `true` |
 |env.VAULT_IMAGE | vault image  | `vault:latest` |
-|env.K8s_SECRET_INJECTOR_IMAGE | vault-env image  | `quay.io/opstree/k8s-secret-injector:2.0` |
+|env.K8S_SECRET_INJECTOR_IMAGE | vault-env image  | `quay.io/opstree/k8s-secret-injector:2.0` |
 |volumes |extra volume definitions  | `[]` |
 |volumeMounts |extra volume mounts  | `[]` |
 | configMapMutation                | enable injecting values from Vault to ConfigMaps                             | `false`                             |
