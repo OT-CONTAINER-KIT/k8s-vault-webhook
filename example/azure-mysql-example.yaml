@@ -1,0 +1,48 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-azure-mysql
+  labels:
+    app: k8s-azure-mysql
+spec:
+  selector:
+    matchLabels:
+      app: k8s-azure-mysql
+      tier: mysql
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: k8s-azure-mysql
+        tier: mysql
+# Use Azure App Pod Pinding if cluster is configured in Azure
+        # aadpodidbinding: POD_IDENTITY_NAME
+      annotations:
+        azure.opstree.secret.manager/enabled: "true"
+        azure.opstree.secret.manager/vault-name: "vault-k8s-secret"
+    spec:
+      containers:
+      - image: opstree/mysql:latest
+        name: mysql
+# If running outside Azure
+        env:
+        - name: AZURE_CLIENT_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: azure-secret
+              key: AZURE_CLIENT_SECRET
+        - name: AZURE_CLIENT_ID
+          valueFrom:
+            secretKeyRef:
+              name: azure-secret
+              key: AZURE_CLIENT_ID
+        - name: AZURE_TENANT_ID
+          valueFrom:
+            secretKeyRef:
+              name: azure-secret
+              key: AZURE_TENANT_ID
+        ports:
+        - containerPort: 3306
+          name: mysql

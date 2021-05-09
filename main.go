@@ -248,6 +248,11 @@ func (mw *mutatingWebhook) mutateContainers(containers []corev1.Container, podSp
 		container.Command = []string{"/k8s-secret/k8s-secret-injector"}
 		container.Args = args
 
+		if secretManagerConfig.azure.config.enabled {
+			container = secretManagerConfig.azure.mutateContainer(container)
+			mutationInProgress = true
+		}
+
 		if secretManagerConfig.aws.config.enabled {
 			container = secretManagerConfig.aws.mutateContainer(container)
 			mutationInProgress = true
@@ -341,6 +346,9 @@ func (mw *mutatingWebhook) parseSecretManagerConfig(obj metav1.Object) secretMan
 	var smCfg secretManagerConfig
 	annotations := obj.GetAnnotations()
 
+	smCfg.azure.config.enabled, _ = strconv.ParseBool(annotations[AnnotationAzureKeyVaultEnabled])
+	smCfg.azure.config.azureKeyVaultName = annotations[AnnotationAzureKeyVaultName]
+
 	smCfg.aws.config.enabled, _ = strconv.ParseBool(annotations[AnnotationAWSSecretManagerEnabled])
 	smCfg.aws.config.region = annotations[AnnotationAWSSecretManagerRegion]
 	smCfg.aws.config.roleARN = annotations[AnnotationAWSSecretManagerRoleARN]
@@ -380,6 +388,16 @@ func (mw *mutatingWebhook) SecretsMutator(ctx context.Context, obj metav1.Object
 
 	switch v := obj.(type) {
 	case *corev1.Pod:
+		if smCfg.azure.config.enabled {
+			mw.logger.Infof("Using Azure Key Vault")
+
+			if smCfg.azure.config.azureKeyVaultName == "" {
+				return true, fmt.Errorf("Error getting azure key vault - make sure you set the annotation %s on the Pod", AnnotationAzureKeyVaultName)
+			}
+
+			return false, mw.mutatePod(v, smCfg, whcontext.GetAdmissionRequest(ctx).Namespace, whcontext.IsAdmissionRequestDryRun(ctx))
+		}
+
 		if smCfg.aws.config.enabled {
 			mw.logger.Infof("Using AWS Secret Manager")
 
@@ -461,7 +479,7 @@ func newK8SClient() (kubernetes.Interface, error) {
 }
 
 func init() {
-	viper.SetDefault("k8s_secret_injector_image", "quay.io/opstree/k8s-secret-injector:2.0")
+	viper.SetDefault("k8s_secret_injector_image", "quay.io/opstree/k8s-secret-injector:3.0")
 	viper.SetDefault("k8s_secret_injector_image_pull_policy", string(corev1.PullIfNotPresent))
 	viper.SetDefault("k8s_secret_injector_image_pull_secret_name", "")
 	viper.SetDefault("tls_cert_file", "")

@@ -9,6 +9,7 @@ import (
 type secretManagerConfig struct {
 	vault
 	aws
+	azure
 	// explicitSecrets bool // only get secrets that match the prefix `secret:`
 }
 

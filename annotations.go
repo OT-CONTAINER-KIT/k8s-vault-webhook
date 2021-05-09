@@ -1,6 +1,12 @@
 package main
 
 const (
+	// AnnotationAzureKeyVaultEnabled if enabled it will use Azure Key Vault
+	AnnotationAzureKeyVaultEnabled = "azure.opstree.secret.manager/enabled"
+
+	// AnnotationAzureKeyVaultName azure key vault name
+	AnnotationAzureKeyVaultName = "azure.opstree.secret.manager/vault-name"
+
 	// AnnotationAWSSecretManagerEnabled if enabled it will use AWS secret manager
 	AnnotationAWSSecretManagerEnabled = "aws.opstree.secret.manager/enabled"
 
