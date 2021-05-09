@@ -31,14 +31,6 @@ There are some secret managers which are planned to be implemented in future.
 
 ## Architecture
 
-### Hashicorp Vault
-
 <div align="center" style="padding-top: 25px;">
-    <img src="./images/k8s-vault-webhook-arc-vault.png">
-</div>
-
-### AWS Secret Manager
-
-<div align="center" style="padding-top: 25px;">
-    <img src="./images/k8s-vault-webhook-arc-aws.png">
+    <img src="./images/k8s-vault-webhook-arc.png">
 </div>
