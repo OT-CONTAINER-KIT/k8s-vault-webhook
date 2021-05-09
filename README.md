@@ -32,10 +32,10 @@ The secret managers which are currently supported:-
 
 - **[Hashicorp Vault](https://www.vaultproject.io/)**
 - **[AWS Secret Manager](https://aws.amazon.com/secrets-manager/)**
+- **[Azure Key Vault](https://azure.microsoft.com/en-in/services/key-vault/)**
 
 There are some secret managers which are planned to be implemented in future.
 
-- **[Azure Key Vault](https://azure.microsoft.com/en-in/services/key-vault/)**
 - **[GCP Secret Manager](https://cloud.google.com/secret-manager)**
 
 ### Supported Features
@@ -45,21 +45,16 @@ There are some secret managers which are planned to be implemented in future.
 - Inject secret directly to pods/containers running inside Kubernetes
 - Inject secret directly to pods/containers from AWS Secret Manager
 - Authentication with AWS Secret Manager with access key and iam role
+- Fetch secrets from Azure Key Vault and inject them in pods/containers
+- Pod AD identity and Service principal based authentication in Azure
+- Authentication with AWS Secret Manager with access key and iam role
 - Support regex to inject all secrets from a certain path of Vault
 - Inject secrets directly to the process of container, i.e. after the injection you cannot read secrets from the environment variable
 
 ### Architecture
 
-#### Hashicorp Vault
-
 <div align="center">
-    <img src="./static/k8s-vault-webhook-arc-vault.png">
-</div>
-
-#### AWS Secret Manager
-
-<div align="center">
-    <img src="./static/k8s-vault-webhook-arc-aws.png">
+    <img src="./static/k8s-vault-webhook-arc.png">
 </div>
 
 ### Installation
