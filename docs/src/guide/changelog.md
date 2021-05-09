@@ -1,3 +1,12 @@
+### v3.0
+**May 9, 2021**
+
+**:tada: [Features Added]**
+
+- Added Azure Key Vault support
+- Fetch secrets from Azure Key Vault and inject them in pods/containers
+- Pod AD identity and Service principal based authentication in Azure
+
 ### v2.0
 **May 8, 2021**
 

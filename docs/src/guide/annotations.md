@@ -7,10 +7,10 @@ The annotations which are currently supported:-
 
 - **[Hashicorp Vault](https://www.vaultproject.io/)**
 - **[AWS Secret Manager](https://aws.amazon.com/secrets-manager/)**
+- **[Azure Key Vault](https://azure.microsoft.com/en-in/services/key-vault/)**
 
 There are some other annotations which are planned to be implemented in future.
 
-- **[Azure Key Vault](https://azure.microsoft.com/en-in/services/key-vault/)**
 - **[GCP Secret Manager](https://cloud.google.com/secret-manager)**
 
 ## Vault Annotations
@@ -39,3 +39,10 @@ The available annotations for k8s vault webhook are:-
 |`aws.secret.manager/role-arn`| AWS IAM Role to access the secret | no | |
 |`aws.secret.manager/secret-name`| Name of the AWS secret | no | |
 |`aws.secret.manager/previous-version`| If the secret is rotated, set to "true" | no | |
+
+## Azure Annotations
+
+|**Name**|**Description**|**Required**|**Default**|
+|--------|---------------|------------|-----------|
+|`azure.secret.manager/enabled`| Enable the Azure Key Vault | - | false |
+|`azure.secret.manager/vault-name`| Name of the Azure Key Vault in which secrets are held | no | test-secret |

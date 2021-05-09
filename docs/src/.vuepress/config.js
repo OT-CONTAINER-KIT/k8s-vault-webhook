@@ -70,6 +70,7 @@ module.exports = {
           children: [
             'hashicorp-vault',
             'aws-secret-manager',
+            'azure-integration',
           ]
         },
         {
@@ -78,6 +79,7 @@ module.exports = {
           children: [
             'hashicorp-vault-example',
             'aws-secret-manager-example',
+            'azure-examples',
           ]
         },
         {
