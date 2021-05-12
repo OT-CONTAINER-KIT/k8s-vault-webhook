@@ -2,7 +2,7 @@
 REGISTRY ?= quay.io
 REPOSITORY ?= $(REGISTRY)/opstree
 ARTIFACT_NAME=k8s-vault-webhook
-VERSION = 3.0
+VERSION = 4.0
 
 all: build-code build-image
 

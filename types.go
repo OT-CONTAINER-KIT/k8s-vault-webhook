@@ -10,6 +10,7 @@ type secretManagerConfig struct {
 	vault
 	aws
 	azure
+	gcp
 	// explicitSecrets bool // only get secrets that match the prefix `secret:`
 }
 
