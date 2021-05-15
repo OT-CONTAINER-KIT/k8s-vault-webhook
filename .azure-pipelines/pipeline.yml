@@ -1,0 +1,196 @@
+---
+trigger: 
+  - master
+
+pr:
+  branches:
+    include:
+    - master
+
+variables:
+  - group: RuntimeVariables
+  
+stages:
+- stage: precheck
+  jobs:
+    - job: govet
+      dependsOn: []
+      pool:
+        vmImage: "ubuntu-18.04"
+      steps:
+        - task: GoTool@0
+          displayName: "Installing Golang"
+          inputs:
+            version: '1.16'
+        - task: Go@0
+          displayName: "Executing go vet"
+          inputs:
+            command: 'custom'
+            customCommand: 'vet'
+
+- stage: code_quality
+  dependsOn: ["precheck"]
+  jobs:
+    - job: golang_ci_lint
+      dependsOn: []
+      pool:
+        vmImage: "ubuntu-18.04"
+      steps:
+        - task: GoTool@0
+          displayName: "Installing Golang"
+          inputs:
+            version: '1.16'
+        - script: |
+            curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s v1.40.0
+            ./bin/golangci-lint run --timeout 5m0s ./...
+          displayName: "Executing golang-ci lint"
+
+- stage: dockerfile_lint
+  dependsOn: ["precheck"]
+  jobs:
+    - job: dockerfile_lint
+      dependsOn: []
+      pool:
+        vmImage: "ubuntu-18.04"
+      steps:
+        - script: scripts/dockerfile-linter.sh
+          displayName: "Executing dockerlinter"
+
+- stage: build
+  dependsOn: ["code_quality"]
+  jobs:
+    - job: linux_amd64
+      dependsOn: []
+      pool:
+        vmImage: "ubuntu-18.04"
+      steps:
+        - task: GoTool@0
+          displayName: "Installing Golang"
+          inputs:
+            version: '1.16'
+        - task: Go@0
+          displayName: "Executing go build"
+          inputs:
+            command: 'build'
+            arguments: '-o $(Agent.BuildDirectory)/k8s-vault-webhook'
+        - task: ArchiveFiles@2
+          displayName: 'Archiving go binary'
+          inputs:
+            rootFolderOrFile: '$(Agent.BuildDirectory)/k8s-vault-webhook'
+            includeRootFolder: true
+            archiveType: 'zip'
+            archiveFile: '$(Build.ArtifactStagingDirectory)/compiled/k8s-vault-webhook-linux-amd64.zip'
+            replaceExistingArchive: true
+        - task: PublishBuildArtifacts@1
+          inputs:
+            PathtoPublish: '$(Build.ArtifactStagingDirectory)/compiled'
+            ArtifactName: 'drop'
+            publishLocation: 'Container'
+
+- stage: build_image
+  dependsOn: ["dockerfile_lint"]
+  jobs:
+    - job: linux_amd64
+      dependsOn: []
+      steps:
+      - task: Docker@2
+        displayName: "Building docker image"
+        inputs:
+          command: 'build'
+          Dockerfile: '**/Dockerfile'
+          tags: '$(Build.BuildId)'
+
+- stage: release_binaries
+  dependsOn: ["build", "build_image"]
+  jobs:
+    - job: goreleaser
+      dependsOn: []  
+      pool:
+        vmImage: "ubuntu-18.04"
+      steps:
+        - script: scripts/goreleaser.sh
+          displayName: "Releasing go binaries"
+          env:
+            GITHUB_TOKEN: $(GithubToken)
+      condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+
+- stage: release_quay
+  dependsOn: ["build", "build_image"]
+  jobs:
+    - job: quay
+      dependsOn: []  
+      pool:
+        vmImage: "ubuntu-18.04"
+      steps:
+        - task: Docker@2
+          displayName: "Publish quay image"
+          inputs:
+            containerRegistry: 'QuayServiceConnection'
+            repository: 'opstree/k8s-vault-webhook'
+            command: 'buildAndPush'
+            Dockerfile: '**/Dockerfile'
+            tags: |
+              latest
+              $(Build.SourceBranchName)
+      condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+
+- stage: release_github_image
+  dependsOn: ["build", "build_image"]
+  jobs:
+    - job: github
+      dependsOn: []  
+      pool:
+        vmImage: "ubuntu-18.04"
+      steps:
+        - task: Docker@2
+          displayName: "Publish github image"
+          inputs:
+            containerRegistry: 'GithubServiceConnection'
+            repository: 'ot-container-kit/k8s-vault-webhook/k8s-vault-webhook'
+            command: 'buildAndPush'
+            Dockerfile: '**/Dockerfile'
+            tags: |
+              latest
+              $(Build.SourceBranchName)
+      condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+
+- stage: verify
+  dependsOn: ["release_binaries", "release_quay", "release_github_image"]
+  jobs:
+    - job: verfiy
+      dependsOn: []  
+      pool:
+        vmImage: "ubuntu-18.04"
+      steps:
+        - task: DownloadBuildArtifacts@0
+          displayName: "Downloading the artifact"
+          inputs:
+            buildType: 'current'
+            downloadType: 'single'
+            artifactName: 'drop'
+            downloadPath: '$(System.ArtifactsDirectory)'
+        - task: ExtractFiles@1
+          displayName: "Extracting files"
+          inputs:
+            archiveFilePatterns: '$(System.ArtifactsDirectory)/drop/k8s-vault-webhook-linux-amd64.zip'
+            destinationFolder: '$(Agent.BuildDirectory)'
+            cleanDestinationFolder: false
+            overwriteExistingFiles: true
+        - script: |
+            $(Agent.BuildDirectory)/k8s-vault-webhook --help || true
+          displayName: "Executing k8s-vault-webhook"
+
+- stage: docs
+  dependsOn: ["release_binaries", "release_quay", "release_github_image"]
+  jobs:
+    - job: build
+      dependsOn: []  
+      pool:
+        vmImage: "ubuntu-18.04"
+      steps:
+        - task: NodeTool@0
+          displayName: "Installing NodeJS"
+          inputs:
+            versionSpec: '>=8.6'
+        - script: scripts/build-docs.sh
+          displayName: "Building documentation"
