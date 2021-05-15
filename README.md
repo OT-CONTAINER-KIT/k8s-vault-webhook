@@ -4,7 +4,7 @@
 
 <p align="center">
   <a href="https://github.com/OT-CONTAINER-KIT/k8s-vault-webhook">
-    <img src="https://github.com/OT-CONTAINER-KIT/k8s-vault-webhook/workflows/CI%20Pipeline/badge.svg" alt="Github CI">
+    <img src="https://dev.azure.com/abhishekbhardwaj510/DevOps/_apis/build/status/k8s-vault-webhook/k8s-vault-webhook?branchName=master" alt="Azure Pipelines">
   </a>
   <a href="https://goreportcard.com/report/github.com/OT-CONTAINER-KIT/k8s-vault-webhook">
     <img src="https://goreportcard.com/badge/github.com/OT-CONTAINER-KIT/k8s-vault-webhook" alt="GoReportCard">
