@@ -183,7 +183,7 @@ stages:
 - stage: docs
   dependsOn: ["release_binaries", "release_quay", "release_github_image"]
   jobs:
-    - job: verfiy
+    - job: build
       dependsOn: []  
       pool:
         vmImage: "ubuntu-18.04"
