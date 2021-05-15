@@ -191,6 +191,6 @@ stages:
         - task: NodeTool@0
           displayName: "Installing NodeJS"
           inputs:
-            versionSpec: '6.x'
+            versionSpec: '>=8.6'
         - script: scripts/build-docs.sh
           displayName: "Building documentation"
