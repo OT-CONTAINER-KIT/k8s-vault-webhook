@@ -177,7 +177,7 @@ stages:
             cleanDestinationFolder: false
             overwriteExistingFiles: true
         - script: |
-            $(Agent.BuildDirectory)/k8s-vault-webhook --help
+            $(Agent.BuildDirectory)/k8s-vault-webhook --help || true
           displayName: "Executing k8s-vault-webhook"
 
 - stage: docs
