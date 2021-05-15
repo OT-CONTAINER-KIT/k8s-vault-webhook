@@ -13,6 +13,7 @@ compare_version() {
     version=$(cat VERSION)
     if ! git tag -l | grep "${version}"
     then
+        git checkout master
         echo "git tag ${version}"
         git tag "${version}"
         release
