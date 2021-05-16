@@ -1,3 +1,13 @@
+### v4.0
+**May 16, 2021**
+
+**:tada: [Features Added]**
+
+- Added GCP secret Manager support
+- Added CI pipeline using Azure DevOps
+- Authenticate and authorize using GCP service-account and annotations
+- Secret injection in pods/containers from GCP Secret Manager
+
 ### v3.0
 **May 9, 2021**
 

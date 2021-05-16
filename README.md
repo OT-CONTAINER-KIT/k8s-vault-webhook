@@ -3,7 +3,7 @@
 </div>
 
 <p align="center">
-  <a href="https://github.com/OT-CONTAINER-KIT/k8s-vault-webhook">
+  <a href="https://dev.azure.com/abhishekbhardwaj510/DevOps/_build?definitionId=4&_a=summary">
     <img src="https://dev.azure.com/abhishekbhardwaj510/DevOps/_apis/build/status/k8s-vault-webhook/k8s-vault-webhook?branchName=master" alt="Azure Pipelines">
   </a>
   <a href="https://goreportcard.com/report/github.com/OT-CONTAINER-KIT/k8s-vault-webhook">
@@ -33,9 +33,6 @@ The secret managers which are currently supported:-
 - **[Hashicorp Vault](https://www.vaultproject.io/)**
 - **[AWS Secret Manager](https://aws.amazon.com/secrets-manager/)**
 - **[Azure Key Vault](https://azure.microsoft.com/en-in/services/key-vault/)**
-
-There are some secret managers which are planned to be implemented in future.
-
 - **[GCP Secret Manager](https://cloud.google.com/secret-manager)**
 
 ### Supported Features
@@ -48,6 +45,8 @@ There are some secret managers which are planned to be implemented in future.
 - Fetch secrets from Azure Key Vault and inject them in pods/containers
 - Pod AD identity and Service principal based authentication in Azure
 - Authentication with AWS Secret Manager with access key and iam role
+- Authenticate and authorize using GCP service-account and annotations
+- Secret injection in pods/containers from GCP Secret Manager
 - Support regex to inject all secrets from a certain path of Vault
 - Inject secrets directly to the process of container, i.e. after the injection you cannot read secrets from the environment variable
 

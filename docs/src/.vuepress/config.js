@@ -71,6 +71,7 @@ module.exports = {
             'hashicorp-vault',
             'aws-secret-manager',
             'azure-integration',
+            'gcp-secret-manager',
           ]
         },
         {
@@ -80,6 +81,7 @@ module.exports = {
             'hashicorp-vault-example',
             'aws-secret-manager-example',
             'azure-examples',
+            'gcp-secret-manager-example',
           ]
         },
         {

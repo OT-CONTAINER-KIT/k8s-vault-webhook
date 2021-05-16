@@ -13,9 +13,6 @@ The secret managers which are currently supported:-
 
 - **[Hashicorp Vault](https://www.vaultproject.io/)**
 - **[AWS Secret Manager](https://aws.amazon.com/secrets-manager/)**
-
-There are some secret managers which are planned to be implemented in future.
-
 - **[Azure Key Vault](https://azure.microsoft.com/en-in/services/key-vault/)**
 - **[GCP Secret Manager](https://cloud.google.com/secret-manager)**
 
