@@ -156,7 +156,7 @@ stages:
             IMAGE_PATH: $(System.ArtifactsDirectory)/drop/k8s-vault-webhook.tar
 
 - stage: release_binaries
-  dependsOn: ["container_security", "code_security"]
+  dependsOn: ["code_security"]
   jobs:
     - job: goreleaser
       dependsOn: []  
@@ -236,7 +236,7 @@ stages:
           displayName: "Executing k8s-vault-webhook"
 
 - stage: docs
-  dependsOn: ["release_binaries", "release_quay", "release_github_image"]
+  dependsOn: ["verify"]
   jobs:
     - job: build
       dependsOn: []  
