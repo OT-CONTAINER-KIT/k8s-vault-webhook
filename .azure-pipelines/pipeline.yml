@@ -99,7 +99,7 @@ stages:
             publishLocation: 'Container'
 
 - stage: build_image
-  dependsOn: ["dockerfile_lint"]
+  dependsOn: ["container_quality"]
   jobs:
     - job: linux_amd64
       dependsOn: []
