@@ -5,7 +5,7 @@ install_gosec() {
 }
 
 execute_gosec() {
-    ./bin/gosec -fmt=junit-xml -out=/bin/results.xml ./...
+    ./bin/gosec -fmt=junit-xml -out=./bin/results.xml ./...
 }
 
 main() {

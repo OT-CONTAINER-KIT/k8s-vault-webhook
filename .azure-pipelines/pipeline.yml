@@ -122,7 +122,7 @@ stages:
           publishLocation: 'Container'
 
 - stage: code_security
-  dependsOn: ["build_image", "build"]
+  dependsOn: ["build"]
   jobs:
     - job: gosec
       dependsOn: []
@@ -138,7 +138,7 @@ stages:
             testRunTitle: 'GoSec Test Result'
 
 - stage: container_security
-  dependsOn: ["build_image", "build"]
+  dependsOn: ["build_image"]
   jobs:
     - job: trivy_scan
       dependsOn: []
