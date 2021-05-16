@@ -38,3 +38,5 @@ Azure Key Vault is cloud service to securely store and accessing credentials suc
 ## GCP Secret Manager
 
 GCP Secret Manager is a secure and convenient storage system for API keys, passwords, certificates, and other sensitive data. Secret Manager provides a central place and single source of truth to manage, access, and audit secrets across Google Cloud.
+
+![](./images/gcp-secret-mananger-gcp.png)

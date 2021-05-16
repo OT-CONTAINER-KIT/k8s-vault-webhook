@@ -8,9 +8,6 @@ The annotations which are currently supported:-
 - **[Hashicorp Vault](https://www.vaultproject.io/)**
 - **[AWS Secret Manager](https://aws.amazon.com/secrets-manager/)**
 - **[Azure Key Vault](https://azure.microsoft.com/en-in/services/key-vault/)**
-
-There are some other annotations which are planned to be implemented in future.
-
 - **[GCP Secret Manager](https://cloud.google.com/secret-manager)**
 
 ## Vault Annotations
@@ -46,3 +43,13 @@ The available annotations for k8s vault webhook are:-
 |--------|---------------|------------|-----------|
 |`azure.secret.manager/enabled`| Enable the Azure Key Vault | - | false |
 |`azure.secret.manager/vault-name`| Name of the Azure Key Vault in which secrets are held | no | test-secret |
+
+## GCP Annotations
+
+|**Name**|**Description**|**Required**|**Default**|
+|--------|---------------|------------|-----------|
+|`gcp.opstree.secret.manager/enabled`| enable the GCP secret manager | - | false |
+|`gcp.opstree.secret.manager/project-id` | GCP Project ID | Yes | - |
+|`gcp.opstree.secret.manager/gcp-service-account-key-secret-name` | GCP IAM service account secret name (file name **must be** `service-account.json`) | No | Google Default Application Credentials |
+|`gcp.opstree.secret.manager/secret-name` | secret name | Yes | - |
+|`gcp.opstree.secret.manager/secret-version` | specify the secret version as string | No | Latest |

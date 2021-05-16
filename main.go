@@ -50,6 +50,20 @@ func (mw *mutatingWebhook) getVolumes(existingVolumes []corev1.Volume, secretMan
 		},
 	}
 
+	if secretManagerConfig.gcp.config.serviceAccountKeySecretName != "" {
+		mw.logger.Debugf("Adding Google Cloud Key Volume to podspec")
+		volumes = append(volumes, []corev1.Volume{
+			{
+				Name: "google-cloud-key",
+				VolumeSource: corev1.VolumeSource{
+					Secret: &corev1.SecretVolumeSource{
+						SecretName: secretManagerConfig.gcp.config.serviceAccountKeySecretName,
+					},
+				},
+			},
+		}...)
+	}
+
 	if secretManagerConfig.vault.config.tlsSecretName != "" {
 		mw.logger.Debugf("Adding Vault TLS Volume to podspec")
 		volumes = append(volumes, []corev1.Volume{
@@ -258,6 +272,11 @@ func (mw *mutatingWebhook) mutateContainers(containers []corev1.Container, podSp
 			mutationInProgress = true
 		}
 
+		if secretManagerConfig.gcp.config.enabled {
+			container = secretManagerConfig.gcp.mutateContainer(container)
+			mutationInProgress = true
+		}
+
 		if secretManagerConfig.vault.config.enabled {
 			container = secretManagerConfig.vault.mutateContainer(container)
 			mutationInProgress = true
@@ -346,6 +365,12 @@ func (mw *mutatingWebhook) parseSecretManagerConfig(obj metav1.Object) secretMan
 	var smCfg secretManagerConfig
 	annotations := obj.GetAnnotations()
 
+	smCfg.gcp.config.enabled, _ = strconv.ParseBool(annotations[AnnotationGCPSecretManagerEnabled])
+	smCfg.gcp.config.projectID = annotations[AnnotationGCPSecretManagerProjectID]
+	smCfg.gcp.config.secretName = annotations[AnnotationGCPSecretManagerSecretName]
+	smCfg.gcp.config.secretVersion = annotations[AnnotationGCPSecretManagerSecretVersion]
+	smCfg.gcp.config.serviceAccountKeySecretName = annotations[AnnotationGCPSecretManagerGCPServiceAccountKeySecretName]
+
 	smCfg.azure.config.enabled, _ = strconv.ParseBool(annotations[AnnotationAzureKeyVaultEnabled])
 	smCfg.azure.config.azureKeyVaultName = annotations[AnnotationAzureKeyVaultName]
 
@@ -403,6 +428,24 @@ func (mw *mutatingWebhook) SecretsMutator(ctx context.Context, obj metav1.Object
 
 			if smCfg.aws.config.secretName == "" {
 				return true, fmt.Errorf("Error getting aws secret name - make sure you set the annotation %s on the Pod", AnnotationAWSSecretManagerSecretName)
+			}
+
+			return false, mw.mutatePod(v, smCfg, whcontext.GetAdmissionRequest(ctx).Namespace, whcontext.IsAdmissionRequestDryRun(ctx))
+		}
+
+		if smCfg.gcp.config.enabled {
+			var err error
+			mw.logger.Infof("Using GCP Secret Manager")
+
+			if smCfg.gcp.config.projectID == "" {
+				err = fmt.Errorf("Error getting gcp project id - make sure you set the annotation %s on the Pod", AnnotationGCPSecretManagerProjectID)
+			}
+			if smCfg.gcp.config.secretName == "" {
+				err = fmt.Errorf("Error getting gcp secret name - make sure you set the annotation %s on the Pod", AnnotationGCPSecretManagerSecretName)
+			}
+
+			if err != nil {
+				return true, err
 			}
 
 			return false, mw.mutatePod(v, smCfg, whcontext.GetAdmissionRequest(ctx).Namespace, whcontext.IsAdmissionRequestDryRun(ctx))
@@ -479,7 +522,7 @@ func newK8SClient() (kubernetes.Interface, error) {
 }
 
 func init() {
-	viper.SetDefault("k8s_secret_injector_image", "quay.io/opstree/k8s-secret-injector:3.0")
+	viper.SetDefault("k8s_secret_injector_image", "quay.io/opstree/k8s-secret-injector:4.0")
 	viper.SetDefault("k8s_secret_injector_image_pull_policy", string(corev1.PullIfNotPresent))
 	viper.SetDefault("k8s_secret_injector_image_pull_secret_name", "")
 	viper.SetDefault("tls_cert_file", "")

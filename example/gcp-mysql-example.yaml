@@ -1,0 +1,32 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-gcp-mysql
+  labels:
+    app: k8s-gcp-mysql
+spec:
+  selector:
+    matchLabels:
+      app: k8s-gcp-mysql
+      tier: mysql
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: k8s-gcp-mysql
+        tier: mysql
+      annotations:
+        gcp.opstree.secret.manager/enabled: "true"
+        gcp.opstree.secret.manager/project-id: "graceful-flag-209120"
+        gcp.opstree.secret.manager/secret-name: "test-secret"
+        gcp.opstree.secret.manager/secret-version: "3"
+        gcp.opstree.secret.manager/gcp-service-account-key-secret-name: "gcp-sa"
+    spec:
+      containers:
+      - image: opstree/mysql:latest
+        name: mysql
+        ports:
+        - containerPort: 3306
+          name: mysql

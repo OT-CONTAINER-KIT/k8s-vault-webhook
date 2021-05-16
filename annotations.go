@@ -1,6 +1,22 @@
 package main
 
 const (
+	// AnnotationGCPSecretManagerEnabled if enabled use GCP secret manager
+	AnnotationGCPSecretManagerEnabled = "gcp.opstree.secret.manager/enabled"
+
+	// AnnotationGCPSecretManagerProjectID the gcp project id to use for the secret manager
+	AnnotationGCPSecretManagerProjectID = "gcp.opstree.secret.manager/project-id"
+
+	// AnnotationGCPSecretManagerSecretName the name of the GCP secret
+	AnnotationGCPSecretManagerSecretName = "gcp.opstree.secret.manager/secret-name"
+
+	// AnnotationGCPSecretManagerSecretVersion the version number for the secret
+	AnnotationGCPSecretManagerSecretVersion = "gcp.opstree.secret.manager/secret-version"
+
+	// AnnotationGCPSecretManagerGCPServiceAccountKeySecretName is the secret name where the GCP service account credentials
+	// are stored and has teh permissions to access the secret
+	AnnotationGCPSecretManagerGCPServiceAccountKeySecretName = "gcp.opstree.secret.manager/gcp-service-account-key-secret-name"
+
 	// AnnotationAzureKeyVaultEnabled if enabled it will use Azure Key Vault
 	AnnotationAzureKeyVaultEnabled = "azure.opstree.secret.manager/enabled"
 
