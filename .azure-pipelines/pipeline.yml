@@ -111,14 +111,14 @@ stages:
           Dockerfile: '**/Dockerfile'
           tags: '$(Build.BuildId)'
           repository: 'k8s-vault-webhook'
-        - script: |
-            docker save -o $(Build.ArtifactStagingDirectory)/image/k8s-vault-webhook.tar k8s-vault-webhook:$(Build.BuildId)
-          displayName: "Archiving docker image"
-        - task: PublishBuildArtifacts@1
-          inputs:
-            PathtoPublish: '$(Build.ArtifactStagingDirectory)/image'
-            ArtifactName: 'drop'
-            publishLocation: 'Container'
+      - script: |
+          docker save -o $(Build.ArtifactStagingDirectory)/image/k8s-vault-webhook.tar k8s-vault-webhook:$(Build.BuildId)
+        displayName: "Archiving docker image"
+      - task: PublishBuildArtifacts@1
+        inputs:
+          PathtoPublish: '$(Build.ArtifactStagingDirectory)/image'
+          ArtifactName: 'drop'
+          publishLocation: 'Container'
 
 - stage: container_security
   dependsOn: ["build_image", "build"]
