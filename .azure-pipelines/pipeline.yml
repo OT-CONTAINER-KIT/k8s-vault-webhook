@@ -112,6 +112,7 @@ stages:
           tags: '$(Build.BuildId)'
           repository: 'k8s-vault-webhook'
       - script: |
+          mkdir -p $(Build.ArtifactStagingDirectory)/image
           docker save -o $(Build.ArtifactStagingDirectory)/image/k8s-vault-webhook.tar k8s-vault-webhook:$(Build.BuildId)
         displayName: "Archiving docker image"
       - task: PublishBuildArtifacts@1
@@ -119,6 +120,22 @@ stages:
           PathtoPublish: '$(Build.ArtifactStagingDirectory)/image'
           ArtifactName: 'drop'
           publishLocation: 'Container'
+
+- stage: code_security
+  dependsOn: ["build_image", "build"]
+  jobs:
+    - job: gosec
+      dependsOn: []
+      steps:
+        - script: scripts/gosec.sh
+          displayName: "Execute gosec scan"
+        - task: PublishTestResults@2
+          displayName: "Publish test results"
+          inputs:
+            testResultsFormat: 'JUnit'
+            testResultsFiles: './bin/results.xml'
+            failTaskOnFailedTests: true
+            testRunTitle: 'GoSec Test Result'
 
 - stage: container_security
   dependsOn: ["build_image", "build"]
@@ -137,22 +154,6 @@ stages:
           displayName: "Execute trivy scan"
           env:
             IMAGE_PATH: $(System.ArtifactsDirectory)/drop/k8s-vault-webhook.tar
-
-- stage: code_security
-  dependsOn: ["build_image", "build"]
-  jobs:
-    - job: gosec
-      dependsOn: []
-      steps:
-        - script: scripts/gosec.sh
-          displayName: "Execute gosec scan"
-        - task: PublishTestResults@2
-          displayName: "Publish test results"
-          inputs:
-            testResultsFormat: 'JUnit'
-            testResultsFiles: './bin/results.xml'
-            failTaskOnFailedTests: true
-            testRunTitle: 'GoSec Test Result'
 
 - stage: release_binaries
   dependsOn: ["container_security", "code_security"]
