@@ -13,6 +13,17 @@ variables:
 stages:
 - stage: precheck
   jobs:
+    - job: gofmt
+      dependsOn: []
+      pool:
+        vmImage: "ubuntu-18.04"
+      steps:
+        - task: GoTool@0
+          displayName: "Installing Golang"
+          inputs:
+            version: '1.16'
+        - script: scripts/gofmt.sh
+          displayName: "Executing gofmt"
     - job: govet
       dependsOn: []
       pool:
@@ -45,7 +56,7 @@ stages:
             ./bin/golangci-lint run --timeout 5m0s ./...
           displayName: "Executing golang-ci lint"
 
-- stage: dockerfile_lint
+- stage: container_quality
   dependsOn: ["precheck"]
   jobs:
     - job: dockerfile_lint
@@ -99,9 +110,52 @@ stages:
           command: 'build'
           Dockerfile: '**/Dockerfile'
           tags: '$(Build.BuildId)'
+          repository: 'k8s-vault-webhook'
+        - script: |
+            docker save -o $(Build.ArtifactStagingDirectory)/image/k8s-vault-webhook.tar k8s-vault-webhook:$(Build.BuildId)
+          displayName: "Archiving docker image"
+        - task: PublishBuildArtifacts@1
+          inputs:
+            PathtoPublish: '$(Build.ArtifactStagingDirectory)/image'
+            ArtifactName: 'drop'
+            publishLocation: 'Container'
+
+- stage: container_security
+  dependsOn: ["build_image", "build"]
+  jobs:
+    - job: trivy_scan
+      dependsOn: []
+      steps:
+        - task: DownloadBuildArtifacts@0
+          displayName: "Downloading the image artifact"
+          inputs:
+            buildType: 'current'
+            downloadType: 'single'
+            artifactName: 'drop'
+            downloadPath: '$(System.ArtifactsDirectory)'
+        - script: scripts/trivy-scan.sh
+          displayName: "Execute trivy scan"
+          env:
+            IMAGE_PATH: $(System.ArtifactsDirectory)/drop/k8s-vault-webhook.tar
+
+- stage: code_security
+  dependsOn: ["build_image", "build"]
+  jobs:
+    - job: gosec
+      dependsOn: []
+      steps:
+        - script: scripts/gosec.sh
+          displayName: "Execute gosec scan"
+        - task: PublishTestResults@2
+          displayName: "Publish test results"
+          inputs:
+            testResultsFormat: 'JUnit'
+            testResultsFiles: './bin/results.xml'
+            failTaskOnFailedTests: true
+            testRunTitle: 'GoSec Test Result'
 
 - stage: release_binaries
-  dependsOn: ["build", "build_image"]
+  dependsOn: ["container_security", "code_security"]
   jobs:
     - job: goreleaser
       dependsOn: []  
@@ -115,7 +169,7 @@ stages:
       condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
 
 - stage: release_quay
-  dependsOn: ["build", "build_image"]
+  dependsOn: ["container_security", "code_security"]
   jobs:
     - job: quay
       dependsOn: []  
@@ -135,7 +189,7 @@ stages:
       condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
 
 - stage: release_github_image
-  dependsOn: ["build", "build_image"]
+  dependsOn: ["container_security", "code_security"]
   jobs:
     - job: github
       dependsOn: []  
