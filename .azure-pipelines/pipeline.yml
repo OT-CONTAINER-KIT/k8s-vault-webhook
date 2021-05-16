@@ -134,7 +134,7 @@ stages:
           inputs:
             testResultsFormat: 'JUnit'
             testResultsFiles: './bin/results.xml'
-            failTaskOnFailedTests: true
+            failTaskOnFailedTests: false
             testRunTitle: 'GoSec Test Result'
 
 - stage: container_security
