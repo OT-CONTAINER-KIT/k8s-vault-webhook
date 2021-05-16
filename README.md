@@ -3,8 +3,8 @@
 </div>
 
 <p align="center">
-  <a href="https://dev.azure.com/abhishekbhardwaj510/DevOps/_build?definitionId=4&_a=summary">
-    <img src="https://dev.azure.com/abhishekbhardwaj510/DevOps/_apis/build/status/k8s-vault-webhook/k8s-vault-webhook?branchName=master" alt="Azure Pipelines">
+  <a href="https://dev.azure.com/opstreedevops/DevOps/_build?definitionId=4">
+    <img src="https://dev.azure.com/opstreedevops/DevOps/_apis/build/status/k8s-vault-webhook/k8s-vault-webhook?branchName=master" alt="Azure Pipelines">
   </a>
   <a href="https://goreportcard.com/report/github.com/OT-CONTAINER-KIT/k8s-vault-webhook">
     <img src="https://goreportcard.com/badge/github.com/OT-CONTAINER-KIT/k8s-vault-webhook" alt="GoReportCard">
