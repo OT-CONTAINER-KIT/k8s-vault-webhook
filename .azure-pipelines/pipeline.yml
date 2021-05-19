@@ -20,4 +20,4 @@ extends:
     ApplicationName: k8s-vault-webhook
     QuayImageName: opstree/k8s-vault-webhook
     GithubImageName: ot-container-kit/k8s-vault-webhook/k8s-vault-webhook
-    BuildDocs: false
+    BuildDocs: true
