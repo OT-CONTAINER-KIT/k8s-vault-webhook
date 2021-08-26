@@ -35,6 +35,8 @@ The secret managers which are currently supported:-
 - **[Azure Key Vault](https://azure.microsoft.com/en-in/services/key-vault/)**
 - **[GCP Secret Manager](https://cloud.google.com/secret-manager)**
 
+This project is based on secret-consumer-webhook. Please check out the source code at https://github.com/innovia/secrets-consumer-webhook.
+
 ### Supported Features
 
 - Authentication to Hashicorp vault using Kubernetes service-account
