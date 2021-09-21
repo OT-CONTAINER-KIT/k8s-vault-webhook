@@ -28,6 +28,8 @@ The motive of creating this project is to provide a dynamic secret injection to 
 
 Documentation is available here:- https://ot-container-kit.github.io/k8s-vault-webhook/
 
+Blog Link:- https://blog.opstree.com/2021/09/14/introducing-kubernetes-vault-web-hook/
+
 The secret managers which are currently supported:-
 
 - **[Hashicorp Vault](https://www.vaultproject.io/)**
