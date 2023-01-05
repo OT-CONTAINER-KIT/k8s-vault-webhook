@@ -1,7 +1,7 @@
 #!/bin/bash
 
 download_hadolint() {
-    wget https://github.com/hadolint/hadolint/releases/download/v2.4.0/hadolint-Linux-x86_64
+    wget https://github.com/hadolint/hadolint/releases/download/v2.12.0/hadolint-Linux-x86_64
     chmod +x hadolint-Linux-x86_64
 }
 
